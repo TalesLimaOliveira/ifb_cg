@@ -1,4 +1,9 @@
-# Exercícios para 21/10 - Computação Grafica
+# Exercícios para 21/10 - Computação Gráfica
+
+Esta lista de exercicio é para a disciplina **Computação Gráfica** ministrada pelo Prof. [Raimundo Claudio Vasconcelos]()
+
+Por [Tales L. Oliveira.](https://github.com/TalesLimaOliveira)
+
 
 ### 1) Codigo de conversão de RGB para CMYK
 
