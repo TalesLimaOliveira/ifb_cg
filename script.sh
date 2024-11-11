@@ -13,7 +13,7 @@ WINDOWS_PATH="D:/Files/codes/ifb_cg/Ex3_11-11"  # Caminho de destino no Windows
 
 # Compilar o código na Raspberry Pi
 echo "Compilando o código..."
-g++ -o "$PROGRAM_NAME" "$SOURCE_FILE" -lGL -lGLU -lglut -lm
+gcc -o "$PROGRAM_NAME" "$SOURCE_FILE" -lGL -lGLU -lglut -lm
 if [ $? -ne 0 ]; then
   echo "Erro ao compilar o código."
   exit 1
@@ -23,6 +23,7 @@ echo "Compilação concluída com sucesso."
 # Enviar o binário compilado para o Windows via SCP
 echo "Transferindo binário para o Windows..."
 scp "$PROGRAM_NAME" "$WINDOWS_USER@$WINDOWS_IP:$WINDOWS_PATH"
+echo  "40028922"
 if [ $? -ne 0 ]; then
   echo "Erro ao transferir o binário para o Windows."
   exit 1
