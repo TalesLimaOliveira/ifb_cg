@@ -19,7 +19,7 @@ BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj
 
 # Find all source files (.$(EXTSRC))
-SOURCES := $(wildcard $(SRCDIR)/*.$(EXTSRC)) $(wildcard $(APPDIR)/$(APP).$(EXTSRC))
+SOURCES := $(wildcard $(SRCDIR)/*.$(EXTSRC)) $(wildcard $(APPDIR)/$(APPS).$(EXTSRC))
 
 # Generate a list of object files (.o) from the source file names
 OBJECTS := $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES))) \
