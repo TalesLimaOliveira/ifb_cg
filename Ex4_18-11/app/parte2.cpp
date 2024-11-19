@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 #include "instance.h"
-#include "input.h"
 #include <vector>
  
 using namespace std;
