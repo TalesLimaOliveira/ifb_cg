@@ -6,7 +6,7 @@
 void initialize() {
     glMatrixMode(GL_PROJECTION);
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(0.5f, 0.5f, 0.5f, 0);
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 }
 
 int main(int argc, char *argv[]) {
