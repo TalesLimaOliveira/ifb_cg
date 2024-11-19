@@ -39,17 +39,15 @@ folder:
 # Compile common objects
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
 	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
-	@ echo "Compiled $<"
 
 # Compile app-specific objects
 $(OBJDIR)/%.o: $(APPDIR)/%.$(EXTSRC)
 	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
-	@ echo "Compiled $<"
 
 # Build each app
 $(APPS): %: folder $(COMMON_OBJECTS) $(OBJDIR)/%.o
 	@ $(CC) $(COMMON_OBJECTS) $(OBJDIR)/$@.o $(LDFLAGS) -o $(BINDIR)/$@
-	@ echo "$@ compiled to $(BINDIR)/$@"
+	@ echo "Compiled $@"
 
 # Run targets with arguments
 run: 

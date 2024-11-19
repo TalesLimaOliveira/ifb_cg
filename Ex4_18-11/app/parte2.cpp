@@ -69,6 +69,15 @@ void Teclado(unsigned char key, int x, int y)
 void TeclasEspecias(int key, int x, int y)
 {
 	(void)x; (void)y;
+	if(key == GLUT_KEY_END){
+		esquerda-=0.1; direita+=0.1;
+		cima+=0.1; baixo-=0.1;
+	}
+	if(key == GLUT_KEY_HOME){
+		esquerda+=0.1; direita-=0.1;
+		cima-=0.1; baixo+=0.1;
+	}
+
 	if(key == GLUT_KEY_LEFT)
         translacaoX -= 0.1;
     if(key == GLUT_KEY_RIGHT)
@@ -77,17 +86,6 @@ void TeclasEspecias(int key, int x, int y)
         translacaoY += 0.1;
     if(key == GLUT_KEY_DOWN)
         translacaoY -= 0.1;
-
-	if(key == GLUT_KEY_END){
-		esquerda-=0.1; direita+=0.1;
-		cima+=0.1; baixo-=0.1;
-	}
-
-	if(key == GLUT_KEY_HOME){
-		esquerda+=0.1; direita-=0.1;
-		cima-=0.1; baixo+=0.1;
-	}
-
 	if(key == GLUT_KEY_F9)
 		panX+=0.1;
 	if(key == GLUT_KEY_F10)
