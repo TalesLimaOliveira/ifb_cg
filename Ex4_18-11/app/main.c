@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <GL/glut.h>
-#include "init.h"
 #include "drawing.h"
 #include "input.h"
 
