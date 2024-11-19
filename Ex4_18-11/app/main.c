@@ -11,9 +11,6 @@ void initialize(void){
 }
 
 int main(int argc, char *argv[]) {
-    argc = 0;
-	*argv[] = {(char *)"gl", 0};
-
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500);
