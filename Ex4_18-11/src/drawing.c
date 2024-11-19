@@ -39,7 +39,7 @@ void displayCallback() {
     glLoadIdentity();
 
     glPushMatrix();
-        gluPerspective(zoom, 1.0, 1.0, 100.0);  // Ajuste o FOV (zoom)
+        gluPerspective(zoom, 1.0, 1.0, 100.0);
         gluOrtho2D(left + px, right + px, bot + py, top + py);
         glTranslatef(tx, ty, 0);
         glRotatef(angulo, 0, 0, 1);

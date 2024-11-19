@@ -5,7 +5,10 @@
 
 void initialize() {
     glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(50.0, 1.0, 1.0, 100.0);
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.5f, 0.5f, 0.5f, 0);
 }
@@ -16,6 +19,7 @@ int main(int argc, char *argv[]) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(500, 500);
+    glutInitWindowPosition(15,15);
     glutCreateWindow("Tales Lima Oliveira");
 
     glutDisplayFunc(displayCallback);
