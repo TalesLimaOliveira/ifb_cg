@@ -29,7 +29,7 @@ all: folder $(foreach app,$(APPS),$(BINDIR)/$(app))
 
 # Compile objects
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
-	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+	@ $(CC) $(CFLAGS) -I $(INCDIR) -c $< -o $@
 
 # Link applications
 $(BINDIR)/%: $(APPDIR)/%.$(EXTSRC) $(OBJECTS)
