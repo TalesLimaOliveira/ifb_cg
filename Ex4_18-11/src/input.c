@@ -7,8 +7,8 @@ const double moveLimitX = 1.0;
 const double moveLimitY = 1.0;
 
 // Limites do zoom
-const double zoomLimitMin = 0.25;  // Limite mínimo de zoom
-const double zoomLimitMax = 5.0;   // Limite máximo de zoom
+const double zoomLimitMin = 0.5;  // Limite mínimo de zoom
+const double zoomLimitMax = 2.0;   // Limite máximo de zoom
 
 void keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
