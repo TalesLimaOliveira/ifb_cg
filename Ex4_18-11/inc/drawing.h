@@ -9,4 +9,4 @@ void drawHouse();
 void drawCross();
 void displayCallback();
 
-#endif
+#endif//DRAWING_H

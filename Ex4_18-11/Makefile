@@ -1,8 +1,8 @@
 # Vars
-APPS = parte1
+APPS = parte1 parte2
 APP ?= parte1
-CC = gcc
-EXTSRC = c
+CC = g++
+EXTSRC = cpp
 EXTINC = h
 
 # Flags
