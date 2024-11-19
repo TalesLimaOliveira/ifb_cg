@@ -7,8 +7,8 @@ const double moveLimitX = 1.0;
 const double moveLimitY = 1.0;
 
 // Limites do zoom
-const double zoomLimitMin = 0.5;  // Limite mínimo de zoom
-const double zoomLimitMax = 2.0;   // Limite máximo de zoom
+const double zoomLimitMin = 0.5;  // Limite mínimo de zoom (não deixa o desenho muito pequeno)
+const double zoomLimitMax = 5.0;  // Limite máximo de zoom (não deixa o desenho muito grande)
 
 void keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
@@ -75,7 +75,8 @@ void specialKeysCallback(int key, int x, int y) {
             break;
 
         case GLUT_KEY_HOME: // Zoom in
-            if ((right - left) > zoomLimitMin * 2) { // Verifica se o zoom não ultrapassa o limite mínimo
+            // Verifica se o zoom não ultrapassa o limite máximo
+            if ((right - left) > zoomLimitMin * 2) {
                 left -= 0.25;
                 right += 0.25;
                 bot -= 0.25;
@@ -83,7 +84,8 @@ void specialKeysCallback(int key, int x, int y) {
             }
             break;
         case GLUT_KEY_END: // Zoom out
-            if ((right - left) < zoomLimitMax * 2) { // Verifica se o zoom não ultrapassa o limite máximo
+            // Verifica se o zoom não ultrapassa o limite mínimo
+            if ((right - left) < zoomLimitMax * 2) {
                 left += 0.25;
                 right -= 0.25;
                 bot += 0.25;
@@ -111,8 +113,9 @@ void reshapeCallback(GLsizei w, GLsizei h) {
     glViewport(0, 0, w, h);
     glLoadIdentity();
 
+    // Verifica a relação de aspecto da tela para ajustar a projeção ortográfica
     if (w <= h)
-        gluOrtho2D(0.0f, 250.0f, 0.0f, 250.0f * h / w);
+        gluOrtho2D(left, right, bot, bot + (right - left) * h / w);
     else
-        gluOrtho2D(0.0f, 250.0f * w / h, 0.0f, 250.0f);
+        gluOrtho2D(left, left + (right - left) * w / h, bot, top);
 }
