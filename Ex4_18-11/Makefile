@@ -18,12 +18,12 @@ BUILDDIR = build
 BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj
 
-# Find all source files (.$(EXTSRC))
+# Find all source files in src and app
 SOURCES := $(wildcard $(SRCDIR)/*.$(EXTSRC)) $(wildcard $(APPDIR)/*.$(EXTSRC))
 
-# Generate a list of object files (.o) from the source file names
-OBJECTS := $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES))) \
-           $(patsubst $(APPDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(APPDIR)/%.$(EXTSRC), $(SOURCES)))
+# Create object lists for each app
+APP_OBJECTS = $(foreach app, $(APPS), $(OBJDIR)/$(app).o)
+COMMON_OBJECTS = $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES)))
 
 # Find all library files (.a) in the library directory
 LIBRARIES := $(wildcard $(LIBDIR)/*.a)
@@ -32,21 +32,24 @@ LIBRARIES := $(wildcard $(LIBDIR)/*.a)
 .PHONY: all
 all: folder $(APPS)
 
-# Create directory
+# Create build directories
 folder:
 	@ mkdir -p $(BUILDDIR) $(BINDIR) $(OBJDIR)
 
-# Compile objects
+# Compile common objects
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
 	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+	@ echo "Compiled $<"
 
+# Compile app-specific objects
 $(OBJDIR)/%.o: $(APPDIR)/%.$(EXTSRC)
 	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+	@ echo "Compiled $<"
 
-# Link object files to create the executables
-$(APPS): %: folder $(OBJECTS) $(OBJDIR)/%.o
-	@ $(CC) $(OBJECTS) $(OBJDIR)/$@.o $(LDFLAGS) -o $(BINDIR)/$@
-	@ echo "$@ Compiled"
+# Build each app
+$(APPS): %: folder $(COMMON_OBJECTS) $(OBJDIR)/%.o
+	@ $(CC) $(COMMON_OBJECTS) $(OBJDIR)/$@.o $(LDFLAGS) -o $(BINDIR)/$@
+	@ echo "$@ compiled to $(BINDIR)/$@"
 
 # Run targets with arguments
 run: 
