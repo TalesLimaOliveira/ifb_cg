@@ -6,6 +6,10 @@
 const double moveLimitX = 1.0;
 const double moveLimitY = 1.0;
 
+// Limites do zoom
+const double zoomLimitMin = 0.25;  // Limite mínimo de zoom
+const double zoomLimitMax = 5.0;   // Limite máximo de zoom
+
 void keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
         case 27: // ESC
@@ -13,27 +17,27 @@ void keyboardCallback(unsigned char key, int x, int y) {
             break;
 
         case 'q': // Movimento diagonal (superior esquerda)
-            if (px - 0.25 > -moveLimitX && py + 0.25 < moveLimitY) {
-                px -= 0.25;
-                py += 0.25;
-            }
-            break;
-        case 'a': // Movimento diagonal (inferior esquerda)
             if (px + 0.25 < moveLimitX && py - 0.25 > -moveLimitY) {
                 px += 0.25;
                 py -= 0.25;
             }
             break;
-        case 'e': // Movimento diagonal (superior direita)
+        case 'a': // Movimento diagonal (inferior esquerda)
             if (px + 0.25 < moveLimitX && py + 0.25 < moveLimitY) {
                 px += 0.25;
                 py += 0.25;
             }
             break;
-        case 'd': // Movimento diagonal (inferior direita)
+        case 'e': // Movimento diagonal (superior direita)
             if (px - 0.25 > -moveLimitX && py - 0.25 > -moveLimitY) {
                 px -= 0.25;
                 py -= 0.25;
+            }
+            break;
+        case 'd': // Movimento diagonal (inferior direita)
+            if (px - 0.25 > -moveLimitX && py + 0.25 < moveLimitY) {
+                px -= 0.25;
+                py += 0.25;
             }
             break;
     }
@@ -43,7 +47,7 @@ void keyboardCallback(unsigned char key, int x, int y) {
 void specialKeysCallback(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_PAGE_UP: // Rotação para a esquerda
-            angulo += 0.2;
+            angulo += 0.5;
             break;
         case GLUT_KEY_PAGE_DOWN: // Rotação para a direita
             angulo -= 0.5;
@@ -71,16 +75,20 @@ void specialKeysCallback(int key, int x, int y) {
             break;
 
         case GLUT_KEY_HOME: // Zoom in
-            left -= 0.25;
-            right += 0.25;
-            bot -= 0.25;
-            top += 0.25;
+            if ((right - left) > zoomLimitMin * 2) { // Verifica se o zoom não ultrapassa o limite mínimo
+                left -= 0.25;
+                right += 0.25;
+                bot -= 0.25;
+                top += 0.25;
+            }
             break;
         case GLUT_KEY_END: // Zoom out
-            left += 0.25;
-            right -= 0.25;
-            bot += 0.25;
-            top -= 0.25;
+            if ((right - left) < zoomLimitMax * 2) { // Verifica se o zoom não ultrapassa o limite máximo
+                left += 0.25;
+                right -= 0.25;
+                bot += 0.25;
+                top -= 0.25;
+            }
             break;
 
         case GLUT_KEY_INSERT: // Reset para o centro
