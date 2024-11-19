@@ -3,7 +3,6 @@
 
 double tx = 0, ty = 0, angulo = 0, px = 0, py = 0;
 double left = -1.0, right = 1.0, bot = -1.0, top = 1.0;
-// double zoom = 50.0;
 
 void drawHouse() {
     glColor3f(1.0f, 1.0f, 1.0f);
