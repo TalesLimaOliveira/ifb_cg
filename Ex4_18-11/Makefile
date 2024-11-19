@@ -1,11 +1,12 @@
 # Vars
-APPS = main
+APPS = parte1
+APP ?= parte1
 CC = gcc
 EXTSRC = c
 EXTINC = h
 
 # Flags
-CFLAGS = -O0 -Wall -Wextra
+CFLAGS = -O0 #-Wall -Wextra
 LDFLAGS = -lglut -lGL -lGLU -lm
 
 # Directories
@@ -49,7 +50,7 @@ $(APPS): %: folder $(OBJECTS) $(OBJDIR)/%.o
 
 # Run targets with arguments
 run: 
-	@ ./$(BINDIR)/$(APPS)
+	@ ./$(BINDIR)/$(APP)
 
 # Clean build files
 clean:
