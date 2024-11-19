@@ -1,4 +1,6 @@
 # Vars
+APPS = parte1 parte2
+APP ?= parte1
 CC = g++
 EXTSRC = cpp
 EXTINC = h
@@ -16,37 +18,41 @@ BUILDDIR = build
 BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj
 
-# Sources and objects
+# Find all source files (.$(EXTSRC))
 SOURCES := $(wildcard $(SRCDIR)/*.$(EXTSRC)) $(wildcard $(APPDIR)/*.$(EXTSRC))
-OBJECTS := $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES)))
-APP_SOURCES := $(wildcard $(APPDIR)/*.$(EXTSRC))
-APPS := $(patsubst $(APPDIR)/%.$(EXTSRC), %, $(APP_SOURCES))
+
+# Generate a list of object files (.o) from the source file names
+OBJECTS := $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES))) \
+           $(patsubst $(APPDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(APPDIR)/%.$(EXTSRC), $(SOURCES)))
+
+# Find all library files (.a) in the library directory
 LIBRARIES := $(wildcard $(LIBDIR)/*.a)
 
-# Build all
+# Executes make
 .PHONY: all
-all: folder $(foreach app,$(APPS),$(BINDIR)/$(app))
+all: folder $(APPS)
 
-# Compile objects
-$(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
-	@ $(CC) $(CFLAGS) -I $(INCDIR) -c $< -o $@
-
-# Link applications
-$(BINDIR)/%: $(APPDIR)/%.$(EXTSRC) $(OBJECTS)
-	@ $(CC) $^ $(LDFLAGS) -o $@
-	@ echo "Compiled $@"
-
-# Run applications
-run-%: $(BINDIR)/%
-	@ ./$(BINDIR)/$*
-
-# Create directories
-.PHONY: folder
+# Create directory
 folder:
 	@ mkdir -p $(BUILDDIR) $(BINDIR) $(OBJDIR)
 
-# Clean
-.PHONY: clean
+# Compile objects
+$(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
+	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+
+$(OBJDIR)/%.o: $(APPDIR)/%.$(EXTSRC)
+	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+
+# Link object files to create the executables
+$(APPS): %: folder $(OBJECTS) $(OBJDIR)/%.o
+	@ $(CC) $(OBJECTS) $(OBJDIR)/$@.o $(LDFLAGS) -o $(BINDIR)/$@
+	@ echo "$@ Compiled"
+
+# Run targets with arguments
+run: 
+	@ ./$(BINDIR)/$(APP)
+
+# Clean build files
 clean:
 	@ rm -rf $(BUILDDIR)
 	@ echo "Cleaned build files"
