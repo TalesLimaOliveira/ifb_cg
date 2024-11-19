@@ -3,9 +3,10 @@
 #include "drawing.h"
 #include "input.h"
 
-void initialize() {
+void initialize(void){
     glMatrixMode(GL_PROJECTION);
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 }
 
