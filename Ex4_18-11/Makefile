@@ -1,12 +1,10 @@
 # Vars
-APPS = parte1 parte2
-APP ?= parte1
 CC = g++
 EXTSRC = cpp
 EXTINC = h
 
 # Flags
-CFLAGS = -O0 -Wall -Wextra
+CFLAGS ?= -O0 -02 -Wall -Wextra -g
 LDFLAGS = -lglut -lGL -lGLU -lm
 
 # Directories
@@ -18,41 +16,37 @@ BUILDDIR = build
 BINDIR = $(BUILDDIR)/bin
 OBJDIR = $(BUILDDIR)/obj
 
-# Find all source files (.$(EXTSRC))
+# Sources and objects
 SOURCES := $(wildcard $(SRCDIR)/*.$(EXTSRC)) $(wildcard $(APPDIR)/*.$(EXTSRC))
-
-# Generate a list of object files (.o) from the source file names
-OBJECTS := $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES))) \
-           $(patsubst $(APPDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(APPDIR)/%.$(EXTSRC), $(SOURCES)))
-
-# Find all library files (.a) in the library directory
+OBJECTS := $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES)))
+APP_SOURCES := $(wildcard $(APPDIR)/*.$(EXTSRC))
+APPS := $(patsubst $(APPDIR)/%.$(EXTSRC), %, $(APP_SOURCES))
 LIBRARIES := $(wildcard $(LIBDIR)/*.a)
 
-# Executes make
+# Build all
 .PHONY: all
-all: folder $(APPS)
-
-# Create directory
-folder:
-	@ mkdir -p $(BUILDDIR) $(BINDIR) $(OBJDIR)
+all: folder $(foreach app,$(APPS),$(BINDIR)/$(app))
 
 # Compile objects
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
 	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
 
-$(OBJDIR)/%.o: $(APPDIR)/%.$(EXTSRC)
-	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+# Link applications
+$(BINDIR)/%: $(APPDIR)/%.$(EXTSRC) $(OBJECTS)
+	@ $(CC) $^ $(LDFLAGS) -o $@
+	@ echo "Compiled $@"
 
-# Link object files to create the executables
-$(APPS): $(OBJECTS) $(LIBRARIES)
-	@ $(CC) $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $(BINDIR)/$@
-	@ echo "$@ Compiled"
+# Run applications
+run-%: $(BINDIR)/%
+	@ ./$(BINDIR)/$*
 
-# Run targets with arguments
-run: 
-	@ ./$(BINDIR)/$(APP)
+# Create directories
+.PHONY: folder
+folder:
+	@ mkdir -p $(BUILDDIR) $(BINDIR) $(OBJDIR)
 
-# Clean build files
+# Clean
+.PHONY: clean
 clean:
 	@ rm -rf $(BUILDDIR)
 	@ echo "Cleaned build files"
