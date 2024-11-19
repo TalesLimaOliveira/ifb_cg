@@ -1,6 +1,7 @@
 # Vars
 APPS = parte1 parte2
 APP ?= parte1
+ARGS ?= 
 CC = g++
 EXTSRC = cpp
 EXTINC = h
@@ -51,7 +52,7 @@ $(APPS): %: folder $(COMMON_OBJECTS) $(OBJDIR)/%.o
 
 # Run targets with arguments
 run: 
-	@ ./$(BINDIR)/$(APP)
+	@ ./$(BINDIR)/$(APP) $(ARGS)
 
 # Clean build files
 clean:
