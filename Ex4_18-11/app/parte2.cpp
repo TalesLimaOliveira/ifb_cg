@@ -9,7 +9,7 @@ vector<Instancia> casas;
 int instanciaSelecionada = 0;
 
 double translacaoX = 0, translacaoY = 0, panX = 0, panY = 0;
-double left = -1.0, right = 1.0, bottom = -1.0, top = 1.0;
+double esquerda = -1.0, direita = 1.0, baixo = -1.0, cima = 1.0;
 
 void desenhaCasinha(){
 	glLineWidth(3);
@@ -33,8 +33,8 @@ void desenhaEixos() {
 	glLineWidth(1);
 
 	glBegin(GL_LINES);
-		glVertex2f(left,0.0); glVertex2f(right, 0.0);
-		glVertex2f(0.0,bottom); glVertex2f(0.0,top);
+		glVertex2f(esquerda,0.0); glVertex2f(direita, 0.0);
+		glVertex2f(0.0,baixo); glVertex2f(0.0,cima);
 	glEnd();
 }
 
@@ -69,23 +69,23 @@ void Teclado(unsigned char key, int x, int y)
 void TeclasEspecias(int key, int x, int y)
 {
 	(void)x; (void)y;
-	if (key == GLUT_KEY_LEFT)
+	if(key == GLUT_KEY_LEFT)
         translacaoX -= 0.1;
-    if (key == GLUT_KEY_RIGHT)
+    if(key == GLUT_KEY_RIGHT)
         translacaoX += 0.1;
-    if (key == GLUT_KEY_UP)
+    if(key == GLUT_KEY_UP)
         translacaoY += 0.1;
-    if (key == GLUT_KEY_DOWN)
+    if(key == GLUT_KEY_DOWN)
         translacaoY -= 0.1;
 
 	if(key == GLUT_KEY_END){
-		left-=0.1; right+=0.1;
-		top+=0.1; bottom-=0.1;
+		esquerda-=0.1; direita+=0.1;
+		cima+=0.1; baixo-=0.1;
 	}
 
 	if(key == GLUT_KEY_HOME){
-		left+=0.1; right-=0.1;
-		top-=0.1; bottom+=0.1;
+		esquerda+=0.1; direita-=0.1;
+		cima-=0.1; baixo+=0.1;
 	}
 
 	if(key == GLUT_KEY_F9)
@@ -106,7 +106,7 @@ void Inicializa(void)
 {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(left+panX, right+panX, bottom+panY, top+panY);
+	gluOrtho2D(esquerda+panX, direita+panX, baixo+panY, cima+panY);
 	glMatrixMode(GL_MODELVIEW);
 }
 
