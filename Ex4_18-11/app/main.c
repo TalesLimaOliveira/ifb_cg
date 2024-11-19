@@ -5,15 +5,9 @@
 
 void initialize() {
     glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(50.0, 1.0, 1.0, 100.0);
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glEnable(GL_DEPTH_TEST);
     glClearColor(0.5f, 0.5f, 0.5f, 0);
 }
-
-
 
 int main(int argc, char *argv[]) {
     glutInit(&argc, argv);
