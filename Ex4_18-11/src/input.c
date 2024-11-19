@@ -6,9 +6,9 @@
 const double moveLimitX = 1.0f;
 const double moveLimitY = 1.0f;
 
-// Limites do zoom
-const double zoomLimitMin = 10.0f;  // Limite mínimo do zoom
-const double zoomLimitMax = 100.0f; // Limite máximo do zoom
+// // Limites do zoom
+// const double zoomLimitMin = 10.0f;
+// const double zoomLimitMax = 100.0f;
 
 void keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
@@ -74,15 +74,15 @@ void specialKeysCallback(int key, int x, int y) {
             }
             break;
 
-       case GLUT_KEY_HOME: // Zoom out
-            zoom -= 5.0f;
-            if (zoom < zoomLimitMin) zoom = zoomLimitMin;
-            break;
+    //    case GLUT_KEY_HOME: // Zoom out
+    //         zoom -= 5.0f;
+    //         if (zoom < zoomLimitMin) zoom = zoomLimitMin;
+    //         break;
         
-        case GLUT_KEY_END: // Zoom in
-            zoom += 5.0f;
-            if (zoom > zoomLimitMax) zoom = zoomLimitMax;
-            break;
+    //     case GLUT_KEY_END: // Zoom in
+    //         zoom += 5.0f;
+    //         if (zoom > zoomLimitMax) zoom = zoomLimitMax;
+    //         break;
 
         case GLUT_KEY_INSERT: // Reset para o centro
             tx = ty = px = py = angulo = 0;
