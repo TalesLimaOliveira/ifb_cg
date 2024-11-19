@@ -3,12 +3,12 @@
 #include "drawing.h"
 
 // Define os limites para o movimento
-const double moveLimitX = 1.0;
-const double moveLimitY = 1.0;
+const double moveLimitX = 1.0f;
+const double moveLimitY = 1.0f;
 
 // Limites do zoom
-const double zoomLimitMin = 0.5;  // Limite mínimo de zoom (não deixa o desenho muito pequeno)
-const double zoomLimitMax = 5.0;  // Limite máximo de zoom (não deixa o desenho muito grande)
+const double zoomLimitMin = 10.0f;  // Limite mínimo do zoom
+const double zoomLimitMax = 100.0f; // Limite máximo do zoom
 
 void keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
@@ -74,35 +74,20 @@ void specialKeysCallback(int key, int x, int y) {
             }
             break;
 
-        case GLUT_KEY_HOME: // Zoom in
-            // Verifica se o zoom não ultrapassa o limite máximo
-            if ((right - left) > zoomLimitMin * 2) {
-                left -= 0.25;
-                right += 0.25;
-                bot -= 0.25;
-                top += 0.25;
-            }
+       case GLUT_KEY_HOME: // Zoom out
+            zoom -= 5.0f;
+            if (zoom < zoomLimitMin) zoom = zoomLimitMin;
             break;
-        case GLUT_KEY_END: // Zoom out
-            // Verifica se o zoom não ultrapassa o limite mínimo
-            if ((right - left) < zoomLimitMax * 2) {
-                left += 0.25;
-                right -= 0.25;
-                bot += 0.25;
-                top -= 0.25;
-            }
+        
+        case GLUT_KEY_END: // Zoom in
+            zoom += 5.0f;
+            if (zoom > zoomLimitMax) zoom = zoomLimitMax;
             break;
 
         case GLUT_KEY_INSERT: // Reset para o centro
-            tx = 0;
-            ty = 0;
-            px = 0;
-            py = 0;
-            angulo = 0;
-            left = -1.0;
-            right = 1.0;
-            bot = -1.0;
-            top = 1.0;
+            tx = ty = px = py = angulo = 0;
+            left = bot = -1.0;
+            right = top = 1.0;
             break;
     }
     glutPostRedisplay();

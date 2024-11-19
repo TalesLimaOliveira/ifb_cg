@@ -6,16 +6,15 @@
 void initialize() {
     glMatrixMode(GL_PROJECTION);
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(0.7f, 0.38f, 0.7f, 0); // Pink background
+    glEnable(GL_DEPTH_TEST);
+    glClearColor(0.5f, 0.5f, 0.5f, 0);
 }
 
 
-int main(void) {
-    int argc = 0;
-    char *argv[] = {(char *)"gl", 0};
 
+int main(int argc, char *argv[]) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(500, 500);
     glutCreateWindow("Tales Lima Oliveira");
 
@@ -26,6 +25,5 @@ int main(void) {
 
     initialize();
     glutMainLoop();
-
     return 0;
 }

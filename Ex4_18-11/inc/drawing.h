@@ -3,6 +3,7 @@
 
 extern double tx, ty, angulo, px, py;
 extern double left, right, bot, top;
+extern double zoom;
 
 void drawHouse();
 void drawCross();

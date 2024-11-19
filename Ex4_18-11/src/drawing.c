@@ -3,6 +3,7 @@
 
 double tx = 0, ty = 0, angulo = 0, px = 0, py = 0;
 double left = -1.0, right = 1.0, bot = -1.0, top = 1.0;
+double zoom = 50.0;
 
 void drawHouse() {
     glBegin(GL_TRIANGLES);
@@ -34,14 +35,15 @@ void drawCross() {
 }
 
 void displayCallback() {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
     glPushMatrix();
-    gluOrtho2D(left + px, right + px, bot + py, top + py);
-    glTranslatef(tx, ty, 0);
-    glRotatef(angulo, 0, 0, 1);
-    drawHouse();
+        gluPerspective(zoom, 1.0, 1.0, 100.0);  // Ajuste o FOV (zoom)
+        gluOrtho2D(left + px, right + px, bot + py, top + py);
+        glTranslatef(tx, ty, 0);
+        glRotatef(angulo, 0, 0, 1);
+        drawHouse();
     glPopMatrix();
 
     drawCross();
