@@ -4,7 +4,7 @@ EXTSRC = cpp
 EXTINC = h
 
 # Flags
-CFLAGS ?= -O0 -02 -Wall -Wextra -g
+CFLAGS ?= -O0 -Wall -Wextra
 LDFLAGS = -lglut -lGL -lGLU -lm
 
 # Directories
