@@ -60,7 +60,7 @@ void Desenha(void)
 }
 
 // Função callback chamada para gerenciar eventos de teclas
-void Teclado (unsigned char key, int x, int y)
+void Teclado(unsigned char key, int x, int y)
 {
 	(void)x; (void)y;
     if (key == 27)
@@ -123,12 +123,11 @@ int main(int argc, char *argv[]){
     glutInitWindowPosition(15,15);
     glutCreateWindow("Tales Lima Oliveira");
 
-    glutDisplayFunc(displayCallback);
-    glutKeyboardFunc(keyboardCallback);
-    glutSpecialFunc(specialKeysCallback);
-    glutReshapeFunc(reshapeCallback);
+    glutDisplayFunc(Desenha);
+    glutKeyboardFunc(Teclado);
+    glutSpecialFunc(TeclasEspecias);
 
-    initialize();
+    Inicializa();
     glutMainLoop();
 	return 0;
 }
