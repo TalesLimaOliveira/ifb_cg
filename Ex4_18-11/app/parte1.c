@@ -5,9 +5,10 @@
 
 void initialize(void){
     glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(left+px, right+px, bot+py, top+py);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 }
 
 int main(int argc, char *argv[]) {

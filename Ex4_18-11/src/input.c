@@ -6,10 +6,6 @@
 const double moveLimitX = 1.0f;
 const double moveLimitY = 1.0f;
 
-// // Limites do zoom
-// const double zoomLimitMin = 10.0f;
-// const double zoomLimitMax = 100.0f;
-
 void keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
         case 27: // ESC
@@ -74,15 +70,29 @@ void specialKeysCallback(int key, int x, int y) {
             }
             break;
 
-    //    case GLUT_KEY_HOME: // Zoom out
-    //         zoom -= 5.0f;
-    //         if (zoom < zoomLimitMin) zoom = zoomLimitMin;
-    //         break;
+        case GLUT_KEY_HOME: // Zoom out
+            left += 0.1; right -= 0.1;
+            top -= 0.1; bot += 0.1;
+            break;
         
-    //     case GLUT_KEY_END: // Zoom in
-    //         zoom += 5.0f;
-    //         if (zoom > zoomLimitMax) zoom = zoomLimitMax;
-    //         break;
+        case GLUT_KEY_END: // Zoom in
+            left-=0.1; right+=0.1;
+            top+=0.1; bot-=0.1;
+            break;
+
+
+        case GLUT_KEY_F9: // Pan para a direita
+            px += 0.1;
+            break;
+        case GLUT_KEY_F10: // Pan para a esquerda
+            px -= 0.1;
+            break;
+        case GLUT_KEY_F11: // Pan para cima
+            py += 0.1;
+            break;
+        case GLUT_KEY_F12: // Pan para baixo
+            py -= 0.1;
+            break;
 
         case GLUT_KEY_INSERT: // Reset para o centro
             tx = ty = px = py = angulo = 0;
@@ -90,6 +100,7 @@ void specialKeysCallback(int key, int x, int y) {
             right = top = 1.0;
             break;
     }
+    
     glutPostRedisplay();
 }
 
