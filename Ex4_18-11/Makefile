@@ -44,8 +44,8 @@ $(OBJDIR)/%.o: $(APPDIR)/%.$(EXTSRC)
 	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
 
 # Link object files to create the executables
-$(APPS): %: folder $(OBJECTS) $(OBJDIR)/%.o
-	@ $(CC) $(OBJECTS) $(OBJDIR)/$@.o $(LDFLAGS) -o $(BINDIR)/$@
+$(APPS): $(OBJECTS) $(LIBRARIES)
+	@ $(CC) $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $(BINDIR)/$@
 	@ echo "$@ Compiled"
 
 # Run targets with arguments
