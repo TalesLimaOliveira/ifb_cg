@@ -1,34 +1,15 @@
 #include <stdlib.h>
 #include <GL/glut.h>
+#include <vector>
+#include "drawing2.h"
 #include "instance.h"
 #include "input.h"
-#include "drawing.h"
-#include "drawing2.h"
-#include <vector>
 
 using namespace std;
 
 vector<Instancia> casas;
 int instanciaSelecionada = 0;
 
-void Desenha(void) {
-    // Limpa a janela de visualização com a cor branca
-    glClearColor(0, 0, 0, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glPushMatrix();
-        glLoadIdentity();
-        desenhaEixos();
-    glPopMatrix();
-
-    glPushMatrix();
-        glLoadIdentity();
-        glTranslatef(translacaoX, translacaoY, 0);
-        desenhaCasinha();
-    glPopMatrix();
-
-    glFlush();
-}
 
 void Inicializa(void) {
     glMatrixMode(GL_PROJECTION);
@@ -38,7 +19,7 @@ void Inicializa(void) {
 }
 
 void setupCallbacks() {
-    glutDisplayFunc(displayCallback);
+    glutDisplayFunc(desenha);
     glutKeyboardFunc(keyboardCallback);
     glutSpecialFunc(specialKeysCallback);
     glutReshapeFunc(reshapeCallback);
