@@ -48,7 +48,7 @@ run-%:
 
 # Clean build files: Remove build directory and object files
 clean:
-	@rm -rf $(BUILD_DIR)/*
+	@rm -rf $(BUILD_DIR)
 	@echo "Clean complete."
 
 .PHONY: all clean run-%
