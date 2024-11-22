@@ -1,5 +1,5 @@
-#ifndef DRAWING2_H
-#define DRAWING2_H
+#ifndef DRAWING_H
+#define DRAWING_H
 
 extern double tx, ty, angulo, px, py;
 extern double esquerda, direita, baixo, cima;

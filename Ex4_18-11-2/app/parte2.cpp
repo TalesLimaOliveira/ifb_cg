@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 #include <vector>
-#include "drawing2.h"
+#include "drawing.h"
 #include "instance.h"
 #include "input.h"
 

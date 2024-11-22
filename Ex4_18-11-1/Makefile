@@ -40,7 +40,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(EXT) | $(OBJ_DIR)
 # Link applications: Link object files and source files into executables
 $(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
 	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
-	@echo "Compiled $@"
+	@echo "Compiled $(notdir $@)"
 
 # Run application: Run the specified application with arguments
 run-%:

@@ -1,5 +1,5 @@
 #include <GL/glut.h>
-#include "drawing2.h"
+#include "drawing.h"
 
 double cima = 1.0f, baixo = -1.0f, direita = 1.0f, esquerda = -1.0f;
 double tx = 0, ty = 0, angulo = 0, px = 0, py = 0;
