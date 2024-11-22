@@ -52,3 +52,5 @@ clean:
 	@echo "Clean complete."
 
 .PHONY: all clean run-%
+.PRECIOUS: $(OBJECTS)
+
