@@ -1,8 +1,8 @@
 # Run args: make run-app arg1 arg2
 
 # Compiler selection
-CC = gcc
-EXT = c
+CC = g++
+EXT = cpp
 
 # Compilation flags
 CFLAGS ?= -Wall -Wextra -O0
@@ -14,36 +14,41 @@ SRC_DIR = src
 INC_DIR = inc
 LIB_DIR = lib
 BUILD_DIR = build
+BIN_DIR = $(BUILD_DIR)/bin
+OBJ_DIR = $(BUILD_DIR)/obj
 
 # Source files
 SOURCES = $(wildcard $(SRC_DIR)/*.$(EXT))
-OBJECTS = $(patsubst $(SRC_DIR)/%.$(EXT), $(BUILD_DIR)/%.o, $(SOURCES))
+OBJECTS = $(patsubst $(SRC_DIR)/%.$(EXT), $(OBJ_DIR)/%.o, $(SOURCES))
 LIBRARIES = $(wildcard $(LIB_DIR)/*.a)
 
 # Applications
-APPS = $(wildcard $(APP_DIR)/*.$(EXT))
+APPS = $(patsubst $(APP_DIR)/%.$(EXT), $(BIN_DIR)/%, $(wildcard $(APP_DIR)/*.$(EXT)))
 
 # Default target: Build all applications
-all: $(APPS)
+all: $(APPS) | $(BIN_DIR) $(OBJ_DIR)
 	@echo "Build complete."
 
+# Create build and bin directories if they don't exist
+$(BIN_DIR) $(OBJ_DIR):
+	@mkdir -p $@
+
 # Compile sources: Compile each source file into an object file
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.$(EXT)
-	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(EXT) | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 # Link applications: Link object files and source files into executables
-$(APP_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS)
-	$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
+$(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
+	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
 	@echo "Compiled $@"
 
 # Run application: Run the specified application with arguments
 run-%:
-	@$(APP_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
+	@$(BIN_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
 
 # Clean build files: Remove build directory and object files
 clean:
-	rm -rf $(BUILD_DIR)/*
+	@rm -rf $(BUILD_DIR)/*
 	@echo "Clean complete."
 
 .PHONY: all clean run-%
