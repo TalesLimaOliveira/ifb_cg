@@ -1,6 +1,6 @@
 # Defina os diretórios local e remoto
-$PastaLocal = "./Ex4_18-11"
-$PastaRemota = "/home/rasp/Documents/ifb_cg/Ex4_18-11"
+$PastaLocal = "."
+$PastaRemota = "/home/rasp/Documents/ifb_cg/"
 $UsuarioRemoto = "rasp"
 $HostRemoto = "rasp"   # ou IP
 
