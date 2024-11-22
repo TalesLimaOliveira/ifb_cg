@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 #include "drawing.h"
+#include "instance.h"
 
 // Define os limites para o movimento
 const double moveLimitX = 1.0f;
