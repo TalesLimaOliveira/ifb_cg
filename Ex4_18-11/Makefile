@@ -1,60 +1,49 @@
-# Vars
-APPS = parte1 parte2
-APP ?= parte1
-ARGS ?= 
-CC = g++
-EXTSRC = cpp
-EXTINC = h
+# Run args: make run-app arg1 arg2
 
-# Flags
-CFLAGS ?= -O0 -Wall -Wextra
-LDFLAGS = -lglut -lGL -lGLU -lm
+# Compiler selection
+CC = gcc
+EXT = c
+
+# Compilation flags
+CFLAGS ?= -Wall -Wextra -O0
+LDFLAGS ?= -lglut -lGL -lGLU -lm
 
 # Directories
-APPDIR = app
-INCDIR = inc
-LIBDIR = lib
-SRCDIR = src
-BUILDDIR = build
-BINDIR = $(BUILDDIR)/bin
-OBJDIR = $(BUILDDIR)/obj
+APP_DIR = app
+SRC_DIR = src
+INC_DIR = inc
+LIB_DIR = lib
+BUILD_DIR = build
 
-# Find all source files in src and app
-SOURCES := $(wildcard $(SRCDIR)/*.$(EXTSRC)) $(wildcard $(APPDIR)/*.$(EXTSRC))
+# Source files
+SOURCES = $(wildcard $(SRC_DIR)/*.$(EXT))
+OBJECTS = $(patsubst $(SRC_DIR)/%.$(EXT), $(BUILD_DIR)/%.o, $(SOURCES))
+LIBRARIES = $(wildcard $(LIB_DIR)/*.a)
 
-# Create object lists for each app
-APP_OBJECTS = $(foreach app, $(APPS), $(OBJDIR)/$(app).o)
-COMMON_OBJECTS = $(patsubst $(SRCDIR)/%.$(EXTSRC), $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.$(EXTSRC), $(SOURCES)))
+# Applications
+APPS = $(wildcard $(APP_DIR)/*.$(EXT))
 
-# Find all library files (.a) in the library directory
-LIBRARIES := $(wildcard $(LIBDIR)/*.a)
+# Default target: Build all applications
+all: $(APPS)
+	@echo "Build complete."
 
-# Executes make
-.PHONY: all
-all: folder $(APPS)
+# Compile sources: Compile each source file into an object file
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.$(EXT)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
-# Create build directories
-folder:
-	@ mkdir -p $(BUILDDIR) $(BINDIR) $(OBJDIR)
+# Link applications: Link object files and source files into executables
+$(APP_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS)
+	$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
+	@echo "Compiled $@"
 
-# Compile common objects
-$(OBJDIR)/%.o: $(SRCDIR)/%.$(EXTSRC)
-	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
+# Run application: Run the specified application with arguments
+run-%:
+	@$(APP_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
 
-# Compile app-specific objects
-$(OBJDIR)/%.o: $(APPDIR)/%.$(EXTSRC)
-	@ $(CC) $(CFLAGS) -c $< -I $(INCDIR) -o $@
-
-# Build each app
-$(APPS): %: folder $(COMMON_OBJECTS) $(OBJDIR)/%.o
-	@ $(CC) $(COMMON_OBJECTS) $(OBJDIR)/$@.o $(LDFLAGS) -o $(BINDIR)/$@
-	@ echo "Compiled $@"
-
-# Run targets with arguments
-run: 
-	@ ./$(BINDIR)/$(APP) $(ARGS)
-
-# Clean build files
+# Clean build files: Remove build directory and object files
 clean:
-	@ rm -rf $(BUILDDIR)
-	@ echo "Cleaned build files"
+	rm -rf $(BUILD_DIR)/*
+	@echo "Clean complete."
+
+.PHONY: all clean run-%
