@@ -18,6 +18,15 @@ void keyboard(unsigned char key, int x, int y) {
         case 'R':
             houses[selectedInstance] = Instance();
             break;
+        case 'X':
+        case 'x':
+            if (houses.size() > 1) {
+                houses.erase(houses.begin() + selectedInstance);
+                if (selectedInstance >= static_cast<int>(houses.size())) {
+                    selectedInstance = houses.size() - 1;
+                }
+            }
+            break;
         case 'w':
         case 'W':
             houses[selectedInstance].incrementTranslationY();
