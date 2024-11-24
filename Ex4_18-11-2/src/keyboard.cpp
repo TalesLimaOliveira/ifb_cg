@@ -18,8 +18,58 @@ extern int selectedInstance;
 void handleKeyboard(unsigned char key, int x, int y) {
     (void)x; (void)y; // Supress unused variable warnings
 
-    if (key == 27) // ESC key
-        exit(0);
+    switch (key) {
+        case 27: // ESC key
+            exit(0);
+        case 'r':
+        case 'R':
+            houses[selectedInstance] = Instance();
+            break;
+        case 'w':
+        case 'W':
+            houses[selectedInstance].incrementTranslationY();
+            break;
+        case 'a':
+        case 'A':
+            houses[selectedInstance].decrementTranslationX();
+            break;
+        case 's':
+        case 'S':
+            houses[selectedInstance].decrementTranslationY();
+            break;
+        case 'd':
+        case 'D':
+            houses[selectedInstance].incrementTranslationX();
+            break;
+        case 'q':
+        case 'Q':
+            houses[selectedInstance].incrementAngle();
+            break;
+        case 'e':
+        case 'E':
+            houses[selectedInstance].decrementAngle();
+            break;
+        case 'c':
+        case 'C':
+            {
+                Instance newHouse;
+                houses.push_back(newHouse);
+                selectedInstance = houses.size() - 1;
+            }
+            break;
+        case 'f':
+        case 'F':
+            houses[selectedInstance].incrementScaleX();
+            houses[selectedInstance].incrementScaleY();
+            break;
+        case 'g':
+        case 'G':
+            houses[selectedInstance].decrementScaleX();
+            houses[selectedInstance].decrementScaleY();
+            break;
+    }
+
+    glutPostRedisplay();
 }
 
 /**
@@ -30,7 +80,7 @@ void handleKeyboard(unsigned char key, int x, int y) {
  */
 void handleSpecialKeys(int key, int x, int y) {
     (void)x; (void)y; // Supress unused variable warnings
-    
+
     switch (key) {
         case GLUT_KEY_LEFT:
             houses[selectedInstance].decrementTranslationX();
@@ -44,6 +94,7 @@ void handleSpecialKeys(int key, int x, int y) {
         case GLUT_KEY_DOWN:
             houses[selectedInstance].decrementTranslationY();
             break;
+
         case GLUT_KEY_PAGE_DOWN:
             selectedInstance--;
             if (selectedInstance < 0)
@@ -54,6 +105,7 @@ void handleSpecialKeys(int key, int x, int y) {
             if (selectedInstance >= static_cast<int>(houses.size()))
                 selectedInstance = 0;
             break;
+
         case GLUT_KEY_F1:
             {
                 Instance newHouse;
@@ -61,12 +113,14 @@ void handleSpecialKeys(int key, int x, int y) {
                 selectedInstance = houses.size() - 1;
             }
             break;
+
         case GLUT_KEY_F2:
             houses[selectedInstance].incrementAngle();
             break;
         case GLUT_KEY_F3:
             houses[selectedInstance].decrementAngle();
             break;
+            
         case GLUT_KEY_F5:
             houses[selectedInstance].incrementScaleX();
             houses[selectedInstance].incrementScaleY();
@@ -74,6 +128,9 @@ void handleSpecialKeys(int key, int x, int y) {
         case GLUT_KEY_F6:
             houses[selectedInstance].decrementScaleX();
             houses[selectedInstance].decrementScaleY();
+            break;
+        case GLUT_KEY_INSERT:
+            houses[selectedInstance] = Instance();
             break;
     }
 
