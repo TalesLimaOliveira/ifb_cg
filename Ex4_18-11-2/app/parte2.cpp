@@ -25,6 +25,27 @@ void initialize() {
 }
 
 /**
+ * @brief Handles window resizing.
+ * @param w The new width of the window.
+ * @param h The new height of the window.
+ */
+void reshape(GLsizei w, GLsizei h) {
+    if (h == 0) h = 1;
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    // Check the aspect ratio of the screen to adjust the orthographic projection
+    if (w <= h)
+        gluOrtho2D(left, right, bottom, bottom + (right - left) * h / w);
+    else
+        gluOrtho2D(left, left + (right - left) * w / h, bottom, top);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
+/**
  * @brief Main function to set up the OpenGL environment and start the main loop.
  * @param argc Argument count.
  * @param argv Argument vector.
@@ -40,6 +61,7 @@ int main(int argc, char **argv) {
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(keyboardSpecial);
+    glutReshapeFunc(reshape);
 
     initialize();
     glutMainLoop();

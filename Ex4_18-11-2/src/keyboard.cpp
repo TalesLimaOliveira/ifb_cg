@@ -14,12 +14,18 @@ void keyboard(unsigned char key, int x, int y) {
     switch (key) {
         case 27: // ESC key
             exit(0);
-        case 'r':
-        case 'R':
+
+        case 'c': case 'C':
+            {
+                Instance newHouse;
+                houses.push_back(newHouse);
+                selectedInstance = houses.size() - 1;
+            }
+            break;
+        case 'r': case 'R':
             houses[selectedInstance] = Instance();
             break;
-        case 'X':
-        case 'x':
+        case 'X': case 'x':
             if (houses.size() > 1) {
                 houses.erase(houses.begin() + selectedInstance);
                 if (selectedInstance >= static_cast<int>(houses.size())) {
@@ -27,48 +33,36 @@ void keyboard(unsigned char key, int x, int y) {
                 }
             }
             break;
-        case 'w':
-        case 'W':
+            
+        case 'w': case 'W':
             houses[selectedInstance].incrementTranslationY();
             break;
-        case 'a':
-        case 'A':
+        case 'a': case 'A':
             houses[selectedInstance].decrementTranslationX();
             break;
-        case 's':
-        case 'S':
+        case 's': case 'S':
             houses[selectedInstance].decrementTranslationY();
             break;
-        case 'd':
-        case 'D':
+        case 'd': case 'D':
             houses[selectedInstance].incrementTranslationX();
             break;
-        case 'q':
-        case 'Q':
+
+        case 'q': case 'Q':
             houses[selectedInstance].incrementAngle();
             break;
-        case 'e':
-        case 'E':
+        case 'e': case 'E':
             houses[selectedInstance].decrementAngle();
             break;
-        case 'c':
-        case 'C':
-            {
-                Instance newHouse;
-                houses.push_back(newHouse);
-                selectedInstance = houses.size() - 1;
-            }
-            break;
-        case 'f':
-        case 'F':
+
+        case 'f': case 'F':
             houses[selectedInstance].incrementScaleX();
             houses[selectedInstance].incrementScaleY();
             break;
-        case 'g':
-        case 'G':
+        case 'g': case 'G':
             houses[selectedInstance].decrementScaleX();
             houses[selectedInstance].decrementScaleY();
             break;
+
         case '1':
             selectedInstance--;
             if (selectedInstance < 0)
