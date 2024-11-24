@@ -13,16 +13,11 @@
 #define GREEN 200
 #define BLUE 100
 
-/**
- * @brief Recife two values and return the maximum value
- */
+
 double max(double A, double B) {
     return (A > B) ? A : B;
 }
 
-/**
- * @brief Main function
- */
 int main(void) {
     double R, G, B;
     double C, M, Y, K;
