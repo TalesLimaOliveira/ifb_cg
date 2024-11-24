@@ -1,9 +1,6 @@
 #ifndef DRAWING_H
 #define DRAWING_H
 
-extern double tx, ty, angulo;
-extern double left, right, bot, top;
-
 /**
  * @brief Draws a house.
  */
