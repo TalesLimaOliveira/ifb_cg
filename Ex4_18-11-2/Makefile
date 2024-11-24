@@ -20,7 +20,7 @@ OBJ_DIR = $(BUILD_DIR)/obj
 # Source files
 SOURCES = $(wildcard $(SRC_DIR)/*.$(EXT))
 OBJECTS = $(patsubst $(SRC_DIR)/%.$(EXT), $(OBJ_DIR)/%.o, $(SOURCES))
-LIBRARIES = $(wildcard $(LIB_DIR)/*.a)
+# LIBRARIES = $(wildcard $(LIB_DIR)/*)
 
 # Applications
 APPS = $(patsubst $(APP_DIR)/%.$(EXT), $(BIN_DIR)/%, $(wildcard $(APP_DIR)/*.$(EXT)))
@@ -39,8 +39,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(EXT) | $(OBJ_DIR)
 
 # Link applications: Link object files and source files into executables
 $(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
-	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
-	@echo "Compiled $@"
+	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LDFLAGS) -o $@
+	@echo "Compiled $(notdir $@)"
 
 # Run application: Run the specified application with arguments
 run-%:
@@ -51,7 +51,8 @@ run:
 
 # Clean build files: Remove build directory and object files
 clean:
-	@rm -rf $(BUILD_DIR)/*
+	@rm -rf $(BUILD_DIR)
 	@echo "Clean complete."
 
 .PHONY: all clean run run-%
+.PRECIOUS: $(OBJECTS)
