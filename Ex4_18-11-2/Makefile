@@ -49,21 +49,6 @@ run-%:
 run:
 	@$(BIN_DIR)/*
 
-# # Describe the functionality of the keys and the program
-# describe:
-# 	@echo "Program Capabilities and Key Bindings:"
-# 	@echo "--------------------------------------"
-# 	@echo "ESC: Exit the program"
-# 	@echo "R, Insert: Reset the parameters of the current instance"
-# 	@echo "C, F1: Create a new instance and select it"
-# 	@echo "1, Page Down: Select the previous instance"
-# 	@echo "3, Page Up: Select the next instance"
-# 	@echo "Arrow Keys, WASD: Move the current instance"
-# 	@echo "Q, F2: Increment the angle of the current instance"
-# 	@echo "E, F3: Decrement the angle of the current instance"
-# 	@echo "F, F5: Increment the scale of the current instance"
-# 	@echo "G, F6: Decrement the scale of the current instance"
-
 # Clean build files: Remove build directory and object files
 clean:
 	@rm -rf $(BUILD_DIR)

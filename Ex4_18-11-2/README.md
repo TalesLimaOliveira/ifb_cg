@@ -1,12 +1,8 @@
-# 2D House Drawing Program
+# Multiple 2D House Drawing Program
 
 This program allows you to draw and manipulate 2D house instances using keyboard inputs. Below is a description of the key bindings and what each key does.
 
 ## Key Bindings
-
-### General Controls
-- **ESC**: Exit the program
-- **R / r / INSERT**: Reset the parameters of the current instance
 
 ### Movement Controls
 - **W / w / UP Arrow**: Move the current instance up
@@ -34,3 +30,17 @@ This program allows you to draw and manipulate 2D house instances using keyboard
 - **Rotate instances**: Use the rotation controls to rotate the selected house instance.
 - **Scale instances**: Use the scaling controls to change the size of the selected house instance.
 - **Reset instances**: Reset the parameters of the selected house instance to their default values.
+
+### Outras Funcionalidades
+
+- **R / r / Insert**: Reset the parameters of the current instance
+- **ESC**: Exit the program
+
+## Compilação e Execução
+
+Para compilar e executar o aplicativo, utilize o `Makefile`.
+
+```sh
+make
+make run
+make clean

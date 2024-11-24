@@ -46,6 +46,9 @@ $(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
 run-%:
 	@$(BIN_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
 
+run:
+	@$(BIN_DIR)/*
+
 # Clean build files: Remove build directory and object files
 clean:
 	@rm -rf $(BUILD_DIR)
