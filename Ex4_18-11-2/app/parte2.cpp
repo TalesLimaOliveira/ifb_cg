@@ -2,7 +2,7 @@
 #include <vector>
 #include "draw.h"
 #include "keyboard.h"
-#include "Instancia.h"
+#include "instancia.h"
 
 float translationX = 0, translationY = 0, panX = 0, panY = 0;
 float left  = -1.0f, right = 1.0f, top = 1.0f, bottom  = -1.0f;

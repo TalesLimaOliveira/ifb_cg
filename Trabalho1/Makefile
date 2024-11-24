@@ -40,18 +40,17 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(EXT) | $(OBJ_DIR)
 # Link applications: Link object files and source files into executables
 $(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
 	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
-	@echo "Compiled $@"
+	@echo "Compiled $(notdir $@)"
 
 # Run application: Run the specified application with arguments
 run-%:
 	@$(BIN_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
 
-run:
-	@$(BIN_DIR)/*
-
 # Clean build files: Remove build directory and object files
 clean:
-	@rm -rf $(BUILD_DIR)/*
+	@rm -rf $(BUILD_DIR)
 	@echo "Clean complete."
 
-.PHONY: all clean run run-%
+.PHONY: all clean run-%
+.PRECIOUS: $(OBJECTS)
+

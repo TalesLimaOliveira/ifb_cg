@@ -2,7 +2,7 @@
 #include <GL/glut.h>
 #include <vector>
 #include "keyboard.h"
-#include "Instancia.h"
+#include "instancia.h"
 
 extern float translationX, translationY;
 extern float left, right, top, bottom, panX, panY;
