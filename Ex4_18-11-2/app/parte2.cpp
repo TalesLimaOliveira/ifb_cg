@@ -1,42 +1,46 @@
-#include <stdlib.h>
 #include <GL/glut.h>
 #include <vector>
-#include "drawing.h"
-#include "instance.h"
-#include "input.h"
+#include "draw.h"
+#include "keyboard.h"
+#include "Instancia.h"
 
-using namespace std;
+float translationX = 0, translationY = 0, panX = 0, panY = 0;
+float left  = -1.0f, right = 1.0f, top = 1.0f, bottom  = -1.0f;
 
-vector<Instancia> casas;
-int instanciaSelecionada = 0;
+std::vector<Instancia> houses;
+int selectedInstance = 0;
 
-
-void Inicializa(void) {
+/**
+ * @brief Initializes the OpenGL settings and creates the initial house instance.
+ */
+void initialize() {
+    // Define the 2D viewing window
     glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(esquerda + panX, direita + panX, baixo + panY, cima + panY);
+    gluOrtho2D(left + panX, right + panX, bottom + panY, top + panY);
     glMatrixMode(GL_MODELVIEW);
+
+    Instancia house;
+    houses.push_back(house);
 }
 
-void setupCallbacks() {
-    glutDisplayFunc(desenha);
-    glutKeyboardFunc(keyboardCallback);
-    glutSpecialFunc(specialKeysCallback);
-    glutReshapeFunc(reshapeCallback);
-}
-
-int main(int argc, char *argv[]) {
-    Instancia casa;
-    casas.push_back(casa);
-
+/**
+ * @brief Main function to set up the OpenGL environment and start the main loop.
+ * @param argc Argument count.
+ * @param argv Argument vector.
+ * @return Exit status.
+ */
+int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowPosition(15,15);
     glutInitWindowSize(500, 500);
-    glutInitWindowPosition(15, 15);
-    glutCreateWindow("Tales Lima Oliveira");
+    glutCreateWindow("2D House Drawing");
 
-    setupCallbacks();
-    Inicializa();
+    glutDisplayFunc(display);
+    glutKeyboardFunc(handleKeyboard);
+    glutSpecialFunc(handleSpecialKeys);
+
+    initialize();
     glutMainLoop();
     return 0;
 }
