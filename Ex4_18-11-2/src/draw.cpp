@@ -1,6 +1,6 @@
 #include <GL/glut.h>
-#include "draw.h"
-#include "instancia.h"
+#include <draw.h>
+#include <instancia.h>
 
 extern float left, right, top, bottom, panX, panY;
 extern std::vector<Instancia> houses;
