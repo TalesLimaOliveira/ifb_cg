@@ -1,6 +1,7 @@
 #include <GL/glut.h>
+#include <vector>
 #include <draw.h>
-#include <instance.h>
+#include "instance.h"
 
 extern float left, right, top, bottom, panX, panY;
 extern std::vector<Instance> houses;
