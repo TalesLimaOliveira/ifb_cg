@@ -1,50 +1,52 @@
-# 2D House Drawing Program
+# 🏠 2D House Drawing Program
 
-Este aplicativo é um exemplo de uso da biblioteca OpenGL para desenhar formas geométricas simples e interagir com elas usando o teclado. Ele foi desenvolvido como parte de um exercício de computação gráfica.
+Este aplicativo é um exemplo prático de computação gráfica utilizando a biblioteca OpenGL. Ele permite desenhar e interagir com uma casa em 2D através do teclado, oferecendo funcionalidades de movimento, rotação, zoom, panorâmica e reset.
 
-## Key Bindings
+---
 
-### Teclas de Movimento
+## 🎮 Controles Interativos
 
-- **Seta para Cima (`↑`)**: Move a casa para cima.
-- **Seta para Baixo (`↓`)**: Move a casa para baixo.
-- **Seta para Esquerda (`←`)**: Move a casa para a esquerda.
-- **Seta para Direita (`→`)**: Move a casa para a direita.
+### **🧭 Movimentação**
+- **⬆ Seta para Cima**: Move a casa para cima.
+- **⬇ Seta para Baixo**: Move a casa para baixo.
+- **⬅ Seta para Esquerda**: Move a casa para a esquerda.
+- **➡ Seta para Direita**: Move a casa para a direita.
 
-### Teclas de Rotação
+### **🔄 Rotação**
+- **Page Up**: Rotaciona a casa no sentido anti-horário.
+- **Page Down**: Rotaciona a casa no sentido horário.
 
-- **Page Up**: Rotaciona a casa para a esquerda.
-- **Page Down**: Rotaciona a casa para a direita.
-
-### Teclas de Zoom
-
+### **🔍 Zoom**
 - **Home**: Dá zoom out (afasta a visão).
 - **End**: Dá zoom in (aproxima a visão).
 
-### Teclas de Panorâmica
+### **📍 Panorâmica**
+- **F9**: Move a visão para a direita.
+- **F10**: Move a visão para a esquerda.
+- **F11**: Move a visão para cima.
+- **F12**: Move a visão para baixo.
 
-- **F9**: Panorâmica para a direita.
-- **F10**: Panorâmica para a esquerda.
-- **F11**: Panorâmica para cima.
-- **F12**: Panorâmica para baixo.
+### **🔀 Movimentação Diagonal**
+- **Q**: Move para cima e à esquerda.
+- **A**: Move para baixo e à esquerda.
+- **E**: Move para cima e à direita.
+- **D**: Move para baixo e à direita.
 
-### Teclas de Movimento Diagonal
-
-- **Q**: Movimento diagonal para cima e para a esquerda.
-- **A**: Movimento diagonal para baixo e para a esquerda.
-- **E**: Movimento diagonal para cima e para a direita.
-- **D**: Movimento diagonal para baixo e para a direita.
-
-### Outras Funcionalidades
-
-- **Insert**: Reseta a posição e a rotação da casa para o centro da tela.
+### **⚙️ Outras Funcionalidades**
+- **Insert**: Reseta a posição e rotação da casa para o centro da tela.
 - **ESC**: Fecha o aplicativo.
 
-## Compilação e Execução
+---
 
-Para compilar e executar o aplicativo, utilize o `Makefile`.
+## 🛠️ Compilação e Execução
 
-```sh
-make
-make run
-make clean
+Siga os passos abaixo para compilar e executar o programa usando o `Makefile`:
+
+1. **Compilar o código:**
+> make
+
+2. **Executar o aplicativo:**
+> make run
+
+3. **Limpar os arquivos gerados:**
+> make clean
