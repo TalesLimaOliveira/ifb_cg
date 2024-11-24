@@ -16,6 +16,8 @@ extern int selectedInstance;
  * @param y The y-coordinate of the mouse when the key was pressed.
  */
 void handleKeyboard(unsigned char key, int x, int y) {
+    (void)x; (void)y; // Supress unused variable warnings
+
     if (key == 27) // ESC key
         exit(0);
 }
@@ -27,6 +29,8 @@ void handleKeyboard(unsigned char key, int x, int y) {
  * @param y The y-coordinate of the mouse when the key was pressed.
  */
 void handleSpecialKeys(int key, int x, int y) {
+    (void)x; (void)y; // Supress unused variable warnings
+    
     switch (key) {
         case GLUT_KEY_LEFT:
             houses[selectedInstance].decrementTranslationX();
@@ -47,7 +51,7 @@ void handleSpecialKeys(int key, int x, int y) {
             break;
         case GLUT_KEY_PAGE_UP:
             selectedInstance++;
-            if (selectedInstance >= houses.size())
+            if (selectedInstance >= static_cast<int>(houses.size()))
                 selectedInstance = 0;
             break;
         case GLUT_KEY_F1:

@@ -60,7 +60,7 @@ void display() {
     glPopMatrix();
 
     // Apply geometric transformations and display the house instances
-    for (int i = 0; i < houses.size(); i++) {
+    for (int i = 0; i < static_cast<int>(houses.size()); i++) {
         glPushMatrix();
             glTranslatef(houses[i].getTranslationX(), houses[i].getTranslationY(), 0.0f);
             glScalef(houses[i].getScaleX(), houses[i].getScaleY(), 1.0f);
