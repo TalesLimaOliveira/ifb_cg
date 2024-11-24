@@ -3,13 +3,10 @@
 #include <draw.h>
 #include "instance.h"
 
-extern float left, right, top, bottom, panX, panY;
+extern double left, right, top, bottom, panX, panY;
 extern std::vector<Instance> houses;
 extern int selectedInstance;
 
-/**
- * @brief Draws the coordinate axes.
- */
 void drawAxes() {
     glColor3f(1.0f, 1.0f, 1.0f);
 
@@ -22,9 +19,7 @@ void drawAxes() {
     glEnd();
 }
 
-/**
- * @brief Draws a house.
- */
+
 void drawHouse() {
     glLineWidth(3);
     glBegin(GL_LINE_LOOP);
@@ -41,9 +36,7 @@ void drawHouse() {
     glEnd();
 }
 
-/**
- * @brief Displays the scene.
- */
+
 void display() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

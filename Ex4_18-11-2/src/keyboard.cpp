@@ -4,18 +4,11 @@
 #include <keyboard.h>
 #include <instance.h>
 
-extern float translationX, translationY;
-extern float left, right, top, bottom, panX, panY;
+extern double left, right, top, bottom;
 extern std::vector<Instance> houses;
 extern int selectedInstance;
 
-/**
- * @brief Handles standard keyboard input.
- * @param key The key pressed.
- * @param x The x-coordinate of the mouse when the key was pressed.
- * @param y The y-coordinate of the mouse when the key was pressed.
- */
-void handleKeyboard(unsigned char key, int x, int y) {
+void keyboard(unsigned char key, int x, int y) {
     (void)x; (void)y; // Supress unused variable warnings
 
     switch (key) {
@@ -67,18 +60,23 @@ void handleKeyboard(unsigned char key, int x, int y) {
             houses[selectedInstance].decrementScaleX();
             houses[selectedInstance].decrementScaleY();
             break;
+        case '1':
+            selectedInstance--;
+            if (selectedInstance < 0)
+                selectedInstance = houses.size() - 1;
+            break;
+        case '3':
+            selectedInstance++;
+            if (selectedInstance >= static_cast<int>(houses.size()))
+                selectedInstance = 0;
+            break;
     }
 
     glutPostRedisplay();
 }
 
-/**
- * @brief Handles special keyboard input (arrow keys, function keys, etc.).
- * @param key The special key pressed.
- * @param x The x-coordinate of the mouse when the key was pressed.
- * @param y The y-coordinate of the mouse when the key was pressed.
- */
-void handleSpecialKeys(int key, int x, int y) {
+
+void keyboardSpecial(int key, int x, int y) {
     (void)x; (void)y; // Supress unused variable warnings
 
     switch (key) {

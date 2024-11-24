@@ -20,8 +20,8 @@ This program allows you to draw and manipulate 2D house instances using keyboard
 
 ### Instance Controls
 - **C / c / F1**: Create a new instance and select it
-- **Page Up**: Select the next instance
-- **Page Down**: Select the previous instance
+- **1 / Page Up**: Select the next instance
+- **3 / Page Down**: Select the previous instance
 
 ### Scaling Controls
 - **F / f / F5**: Increment the scale of the current instance

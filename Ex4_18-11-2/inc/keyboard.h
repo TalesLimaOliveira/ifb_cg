@@ -7,7 +7,7 @@
  * @param x The x-coordinate of the mouse when the key was pressed.
  * @param y The y-coordinate of the mouse when the key was pressed.
  */
-void handleKeyboard(unsigned char key, int x, int y);
+void keyboard(unsigned char key, int x, int y);
 
 /**
  * @brief Handles special keyboard input (arrow keys, function keys, etc.).
@@ -15,6 +15,6 @@ void handleKeyboard(unsigned char key, int x, int y);
  * @param x The x-coordinate of the mouse when the key was pressed.
  * @param y The y-coordinate of the mouse when the key was pressed.
  */
-void handleSpecialKeys(int key, int x, int y);
+void keyboardSpecial(int key, int x, int y);
 
 #endif // KEYBOARD_H

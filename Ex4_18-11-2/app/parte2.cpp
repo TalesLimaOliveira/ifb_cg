@@ -4,8 +4,9 @@
 #include <keyboard.h>
 #include <instance.h>
 
-float translationX = 0, translationY = 0, panX = 0, panY = 0;
-float left  = -1.0f, right = 1.0f, top = 1.0f, bottom  = -1.0f;
+double panX = 0.0f, panY = 0.0f;
+double translationX = 0.0f, translationY = 0.0f;
+double left = -1.0f, right = 1.0f, top = 1.0f, bottom = -1.0f;
 
 std::vector<Instance> houses;
 int selectedInstance = 0;
@@ -34,11 +35,11 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowPosition(15,15);
     glutInitWindowSize(500, 500);
-    glutCreateWindow("2D House Drawing");
+    glutCreateWindow("Tales Lima Oliveira - Parte 2");
 
     glutDisplayFunc(display);
-    glutKeyboardFunc(handleKeyboard);
-    glutSpecialFunc(handleSpecialKeys);
+    glutKeyboardFunc(keyboard);
+    glutSpecialFunc(keyboardSpecial);
 
     initialize();
     glutMainLoop();

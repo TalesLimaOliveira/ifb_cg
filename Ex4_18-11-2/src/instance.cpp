@@ -1,5 +1,8 @@
 #include <instance.h>
 
+// Declare extern variables
+extern double left, right, top, bottom;
+
 /**
  * @brief Constructor for the Instance class.
  */
@@ -43,22 +46,32 @@ float Instance::getAngle(void) { return angle; }
 /**
  * @brief Increment the angle of rotation.
  */
-void Instance::incrementAngle() { angle += 1.0f; }
+void Instance::incrementAngle() { 
+    angle += 1.0f; 
+    if (angle >= 360.0f) angle = 0.0f;
+}
 
 /**
  * @brief Decrement the angle of rotation.
  */
-void Instance::decrementAngle() { angle -= 1.0f; }
+void Instance::decrementAngle() { 
+    angle -= 1.0f; 
+    if (angle < 0.0f) angle = 359.0f;
+}
 
 /**
  * @brief Increment the translation in the X direction.
  */
-void Instance::incrementTranslationX() { translationX += 0.1f; }
+void Instance::incrementTranslationX() { 
+    if (translationX < right) translationX += 0.1f; 
+}
 
 /**
  * @brief Increment the translation in the Y direction.
  */
-void Instance::incrementTranslationY() { translationY += 0.1f; }
+void Instance::incrementTranslationY() { 
+    if (translationY < top) translationY += 0.1f; 
+}
 
 /**
  * @brief Increment the scale in the X direction.
@@ -73,12 +86,16 @@ void Instance::incrementScaleY() { scaleY += 0.1f; }
 /**
  * @brief Decrement the translation in the X direction.
  */
-void Instance::decrementTranslationX() { translationX -= 0.1f; }
+void Instance::decrementTranslationX() { 
+    if (translationX > left) translationX -= 0.1f; 
+}
 
 /**
  * @brief Decrement the translation in the Y direction.
  */
-void Instance::decrementTranslationY() { translationY -= 0.1f; }
+void Instance::decrementTranslationY() { 
+    if (translationY > bottom) translationY -= 0.1f; 
+}
 
 /**
  * @brief Decrement the scale in the X direction.

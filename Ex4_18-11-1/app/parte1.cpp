@@ -11,12 +11,18 @@ void initialize(void){
     glLoadIdentity();
 }
 
-int main(int argc, char *argv[]) {
+/**
+ * @brief Main function to set up the OpenGL environment and start the main loop.
+ * @param argc Argument count.
+ * @param argv Argument vector.
+ * @return Exit status.
+ */
+int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(500, 500);
     glutInitWindowPosition(15,15);
-    glutCreateWindow("Tales Lima Oliveira");
+    glutInitWindowSize(500, 500);
+    glutCreateWindow("Tales Lima Oliveira - Parte 1");
 
     glutDisplayFunc(displayCallback);
     glutKeyboardFunc(keyboardCallback);
