@@ -1,12 +1,12 @@
-#ifndef INSTANCIA_H
-#define INSTANCIA_H
+#ifndef INSTANCE_H
+#define INSTANCE_H
 
-class Instancia {
+class Instance {
 public:
     // Constructor
-    Instancia(void);
+    Instance(void);
     // Destructor
-    ~Instancia(void);
+    ~Instance(void);
 
     // Getters for translation, scale, and angle
     float getTranslationX(void);
@@ -40,4 +40,4 @@ private:
     float angle;
 };
 
-#endif // INSTANCIA_H
+#endif // INSTANCE_H

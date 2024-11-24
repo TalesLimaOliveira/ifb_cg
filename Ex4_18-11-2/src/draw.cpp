@@ -1,9 +1,9 @@
 #include <GL/glut.h>
 #include <draw.h>
-#include "instancia.h"
+#include <instance.h>
 
 extern float left, right, top, bottom, panX, panY;
-extern std::vector<Instancia> houses;
+extern std::vector<Instance> houses;
 extern int selectedInstance;
 
 /**

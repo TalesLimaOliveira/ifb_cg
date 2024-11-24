@@ -2,11 +2,11 @@
 #include <GL/glut.h>
 #include <vector>
 #include <keyboard.h>
-#include "instancia.h"
+#include <instance.h>
 
 extern float translationX, translationY;
 extern float left, right, top, bottom, panX, panY;
-extern std::vector<Instancia> houses;
+extern std::vector<Instance> houses;
 extern int selectedInstance;
 
 /**
@@ -52,7 +52,7 @@ void handleSpecialKeys(int key, int x, int y) {
             break;
         case GLUT_KEY_F1:
             {
-                Instancia newHouse;
+                Instance newHouse;
                 houses.push_back(newHouse);
                 selectedInstance = houses.size() - 1;
             }

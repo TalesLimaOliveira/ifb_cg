@@ -35,11 +35,11 @@ $(BIN_DIR) $(OBJ_DIR):
 
 # Compile sources: Compile each source file into an object file
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(EXT) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 # Link applications: Link object files and source files into executables
 $(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) $< $(OBJECTS) $(LDFLAGS) -o $@
+	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LDFLAGS) -o $@
 	@echo "Compiled $(notdir $@)"
 
 # Run application: Run the specified application with arguments

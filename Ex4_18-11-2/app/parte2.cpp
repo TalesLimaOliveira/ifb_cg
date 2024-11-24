@@ -2,12 +2,12 @@
 #include <vector>
 #include <draw.h>
 #include <keyboard.h>
-#include <instancia.h>
+#include <instance.h>
 
 float translationX = 0, translationY = 0, panX = 0, panY = 0;
 float left  = -1.0f, right = 1.0f, top = 1.0f, bottom  = -1.0f;
 
-std::vector<Instancia> houses;
+std::vector<Instance> houses;
 int selectedInstance = 0;
 
 /**
@@ -19,7 +19,7 @@ void initialize() {
     gluOrtho2D(left + panX, right + panX, bottom + panY, top + panY);
     glMatrixMode(GL_MODELVIEW);
 
-    Instancia house;
+    Instance house;
     houses.push_back(house);
 }
 
