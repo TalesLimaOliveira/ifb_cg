@@ -56,35 +56,42 @@ void keyboardSpecial(int key, int x, int y){
     
     switch (key){
     case GLUT_KEY_UP: 
-        if (currentMode == TRANSLATE) // Move up
-            if (translationY + 0.2f < top)
+        if (currentMode == TRANSLATE){ // Move up
+            if (translationY + 0.2f < top){
                 translationY += 0.2f;
-        else if (currentMode == ROTATE)// Rotate clockwise
+            }
+        } else if (currentMode == ROTATE){ // Rotate clockwise
             angulo += 0.5;
-        else if (currentMode == SCALE) // Scale up
+        } else if (currentMode == SCALE){ // Scale up
             scaleX += 0.1; scaleY += 0.1;
+        }
         break;
 
     case GLUT_KEY_DOWN:
-        if (currentMode == TRANSLATE) // Move down
-            if (translationY - 0.2f > bot)
+        if (currentMode == TRANSLATE){ // Move down
+            if (translationY - 0.2f > bot){
                 translationY -= 0.2f;
-        else if (currentMode == ROTATE) // Rotate counter-clockwise
+            }
+        } else if (currentMode == ROTATE){ // Rotate counter-clockwise
             angulo -= 0.5;
-        else if (currentMode == SCALE) // Scale down
+        } else if (currentMode == SCALE){ // Scale down
             scaleX -= 0.1; scaleY -= 0.1;
+        }
         break;
 
     case GLUT_KEY_RIGHT:
         if (currentMode == TRANSLATE){ // Move right
-            if (translationX + 0.2f < right)
+            if (translationX + 0.2f < right){
                 translationX += 0.2f;
+            }
         }
         break;
     case GLUT_KEY_LEFT:
-        if (currentMode == TRANSLATE) // Move left
-            if (translationX - 0.2f > left)
+        if (currentMode == TRANSLATE){ // Move left
+            if (translationX - 0.2f > left){
                 translationX -= 0.2f;
+            }
+        }
         break;
     }
     

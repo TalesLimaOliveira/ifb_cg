@@ -23,7 +23,7 @@ void initialize(void){
  * @param w The new width of the window.
  * @param h The new height of the window.
  */
-void reshape(GLsizei w, GLsizei h) {
+void reshape(GLsizei w, GLsizei h){
     if (h == 0) h = 1;
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
@@ -45,7 +45,7 @@ void reshape(GLsizei w, GLsizei h) {
  * @param argv Argument vector.
  * @return Exit status.
  */
-int main(int argc, char **argv) {
+int main(int argc, char **argv){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowPosition(50, 50);

@@ -7,7 +7,7 @@ extern double angulo, left, right, bot, top;
 /**
  * @brief Draws a house.
  */
-void drawHouse() {
+void drawHouse(){
     glColor3f(1.0f, 1.0f, 1.0f);
     glLineWidth(3.0f);
 
@@ -28,7 +28,7 @@ void drawHouse() {
 /**
  * @brief Draws a cross.
  */
-void drawCross() {
+void drawCross(){
     glColor3f(1.0f, 1.0f, 1.0f);
     glLineWidth(1.0f);
 
@@ -41,7 +41,7 @@ void drawCross() {
 /**
  * @brief The display callback function.
  */
-void display() {
+void display(){
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
