@@ -73,7 +73,6 @@ void display() {
             glRasterPos2f(-0.0125f, -0.05f);
             std::string instanceNumber = std::to_string(i+1);
             drawText(GLUT_BITMAP_TIMES_ROMAN_24, instanceNumber.c_str());
-
         glPopMatrix();
     }
 

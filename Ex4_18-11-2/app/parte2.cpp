@@ -54,8 +54,8 @@ void reshape(GLsizei w, GLsizei h) {
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowPosition(100, 100);
-    glutInitWindowSize(800, 800);
+	glutInitWindowPosition(50, 50);
+    glutInitWindowSize(500, 500);
     glutCreateWindow("Tales Lima Oliveira - Parte 2");
 
     glutDisplayFunc(display);
