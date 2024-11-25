@@ -1,5 +1,6 @@
 #include <GL/glut.h>
 #include <vector>
+#include <string>
 #include <draw.h>
 #include "instance.h"
 
