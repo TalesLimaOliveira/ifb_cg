@@ -42,15 +42,18 @@ $(BIN_DIR)/%: $(APP_DIR)/%.$(EXT) $(OBJECTS) | $(BIN_DIR)
 	@$(CC) $(CFLAGS) -I$(INC_DIR) $< $(OBJECTS) $(LIBRARIES) $(LDFLAGS) -o $@
 	@echo "Compiled $(notdir $@)"
 
-# Run application: Run the specified application with arguments
-run-%:
-	@$(BIN_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
+# # Run application: Run the specified application with arguments
+# run-%:
+# 	@$(BIN_DIR)/$* $(filter-out $@,$(MAKECMDGOALS))
+
+run:
+	@$(BIN_DIR)/*
 
 # Clean build files: Remove build directory and object files
 clean:
 	@rm -rf $(BUILD_DIR)
 	@echo "Clean complete."
 
-.PHONY: all clean run-%
+.PHONY: all clean run #run-%
 .PRECIOUS: $(OBJECTS)
 

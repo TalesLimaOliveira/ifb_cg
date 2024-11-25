@@ -1,39 +1,47 @@
 #include <GL/glut.h>
-#include "drawing.h"
+#include <drawing.h>
 
-double tx = 0, ty = 0, angulo = 0, px = 0, py = 0;
-double left = -1.0, right = 1.0, bot = -1.0, top = 1.0;
+extern double tx, ty, angulo, left, right, bot, top;
 
+/**
+ * @brief Draws a house.
+ */
 void drawHouse() {
     glColor3f(1.0f, 1.0f, 1.0f);
-    glLineWidth(3);
+    glLineWidth(3.0f);
 
     glBegin(GL_LINE_LOOP);
-        glVertex2f(-0.2, -0.2);
-        glVertex2f(-0.2,  0.1);
-        glVertex2f( 0.2,  0.1);
-        glVertex2f( 0.2, -0.2);
+        glVertex2f(-0.2f, -0.2f);
+        glVertex2f(-0.2f,  0.1f);
+        glVertex2f( 0.2f,  0.1f);
+        glVertex2f( 0.2f, -0.2f);
     glEnd();
 
     glBegin(GL_TRIANGLES);
-        glColor3f(0, 0, 1); glVertex2f(-0.2, 0.1);
-        glColor3f(1, 0, 0); glVertex2f(0.0, 0.25);
-        glColor3f(0, 0, 1); glVertex2f(0.2, 0.1);
+        glColor3f(0.0f, 0.0f, 1.0f); glVertex2f(-0.2f, 0.1f);
+        glColor3f(1.0f, 0.0f, 0.0f); glVertex2f(0.0f, 0.25f);
+        glColor3f(0.0f, 0.0f, 1.0f); glVertex2f(0.2f, 0.1f);
     glEnd();
 }
 
+/**
+ * @brief Draws a cross.
+ */
 void drawCross() {
     glColor3f(1.0f, 1.0f, 1.0f);
-    glLineWidth(1);
+    glLineWidth(1.0f);
 
     glBegin(GL_LINES);
-        glVertex2f(0, top); glVertex2f(0, bot);
-        glVertex2f(left, 0); glVertex2f(right, 0);
+        glVertex2f(0.0f, top); glVertex2f(0.0f, bot);
+        glVertex2f(left, 0.0f); glVertex2f(right, 0.0f);
     glEnd();
 }
 
-void displayCallback() {
-    glClearColor(0.5, 0.5, 0.5, 1.0);
+/**
+ * @brief The display callback function.
+ */
+void display() {
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
@@ -44,8 +52,8 @@ void displayCallback() {
 
     glPushMatrix();
         glLoadIdentity();
-        glTranslatef(tx, ty, 0);
-        glRotatef(angulo, 0, 0, 1);
+        glTranslatef(tx, ty, 0.0f);
+        glRotatef(angulo, 0.0f, 0.0f, 1.0f);
         drawHouse();
     glPopMatrix();
 
