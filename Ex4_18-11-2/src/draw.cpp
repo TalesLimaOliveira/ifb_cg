@@ -70,20 +70,20 @@ void display() {
 
             // Draw instance number inside the house
             glColor3f(0.0f, 0.0f, 0.0f);
-            glRasterPos2f(-0.05f, -0.05f);
+            glRasterPos2f(0.0f, -0.0f);
             std::string instanceNumber = std::to_string(i);
             drawText(GLUT_BITMAP_TIMES_ROMAN_24, instanceNumber.c_str());
 
         glPopMatrix();
     }
 
-    // Draw text
-    glPushMatrix();
-        glTranslatef(0.0f, 0.0f, 0.0f);
-        glScalef(0.2f, 0.2f, 0.2f);
-        glRasterPos2f(0, 0);
-        drawText(GLUT_BITMAP_TIMES_ROMAN_24, "TEXT TEST");
-    glPopMatrix();
+    // // Draw text
+    // glPushMatrix();
+    //     glTranslatef(0.0f, 0.0f, 0.0f);
+    //     glScalef(0.2f, 0.2f, 0.2f);
+    //     glRasterPos2f(0.5, 0.5);
+    //     drawText(GLUT_BITMAP_TIMES_ROMAN_24, "TEXT TEST");
+    // glPopMatrix();
 
     glutSwapBuffers();
     glFlush();
