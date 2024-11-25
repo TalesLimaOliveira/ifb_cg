@@ -46,7 +46,7 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    glPushMatrix(); // Corrected order of glPushMatrix and glPopMatrix
+    glPushMatrix();
         drawCross();
     glPopMatrix();
 
