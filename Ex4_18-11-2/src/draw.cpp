@@ -46,12 +46,11 @@ void display() {
     gluOrtho2D(left + panX, right + panX, bottom + panY, top + panY);
     glMatrixMode(GL_MODELVIEW);
 
-    // Clear the window with black color
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // Clear the window with gray bgc
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     glPushMatrix();
-        glLoadIdentity();
         drawAxes();
     glPopMatrix();
 
@@ -65,18 +64,24 @@ void display() {
                 glColor3f(1.0f, 1.0f, 1.0f);
             else
                 glColor3f(0.0f, 0.0f, 1.0f);
+
             drawHouse();
+
+            // Draw instance number inside the house
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glRasterPos2f(-0.05f, -0.05f);
+            std::string instanceNumber = std::to_string(i);
+            drawText(GLUT_BITMAP_TIMES_ROMAN_24, instanceNumber.c_str());
+
         glPopMatrix();
     }
 
     // Draw text
-    glColor3f(0, 0, 0);
     glPushMatrix();
-        glTranslatef(0, 0, 0);
-        glScalef(0.2, 0.2, 0.2);
-        glLineWidth(100);
+        glTranslatef(0.0f, 0.0f, 0.0f);
+        glScalef(0.2f, 0.2f, 0.2f);
         glRasterPos2f(0, 0);
-        drawText(GLUT_BITMAP_TIMES_ROMAN_24, "Casinha");
+        drawText(GLUT_BITMAP_TIMES_ROMAN_24, "TEXT TEST");
     glPopMatrix();
 
     glutSwapBuffers();
