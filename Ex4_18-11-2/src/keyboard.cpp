@@ -16,7 +16,7 @@ void keyboard(unsigned char key, int x, int y) {
             exit(0);
 
         case 'c': case 'C':
-            {
+            if (houses.size() < 9) {
                 Instance newHouse;
                 houses.push_back(newHouse);
                 selectedInstance = houses.size() - 1;
@@ -108,7 +108,7 @@ void keyboardSpecial(int key, int x, int y) {
             break;
 
         case GLUT_KEY_F1:
-            {
+            if (houses.size() < 9) {
                 Instance newHouse;
                 houses.push_back(newHouse);
                 selectedInstance = houses.size() - 1;

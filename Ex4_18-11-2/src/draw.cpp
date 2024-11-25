@@ -71,7 +71,7 @@ void display() {
             // Draw instance number inside the house
             glColor3f(0.0f, 0.0f, 0.0f);
             glRasterPos2f(-0.0125f, -0.05f);
-            std::string instanceNumber = std::to_string(i);
+            std::string instanceNumber = std::to_string(i+1);
             drawText(GLUT_BITMAP_TIMES_ROMAN_24, instanceNumber.c_str());
 
         glPopMatrix();
