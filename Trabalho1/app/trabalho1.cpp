@@ -3,7 +3,8 @@
 #include <drawing.h>
 #include <keyboard.h>
 
-double tx = 0.0f, ty = 0.0f, angulo = 0.0f;
+double translationX = 0.0f, translationY = 0.0f;
+double scaleX = 1.0f, scaleY = 1.0f, angulo = 0.0f;
 double left = -1.0f, right = 1.0f, bot = -1.0f, top = 1.0f;
 
 /**

@@ -1,7 +1,8 @@
 #include <GL/glut.h>
 #include <drawing.h>
 
-extern double tx, ty, angulo, left, right, bot, top;
+extern double translationX, translationY, scaleX, scaleY;
+extern double angulo, left, right, bot, top;
 
 /**
  * @brief Draws a house.
@@ -45,14 +46,13 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    glPushMatrix();
-        glLoadIdentity();
+    glPushMatrix(); // Corrected order of glPushMatrix and glPopMatrix
         drawCross();
     glPopMatrix();
 
     glPushMatrix();
-        glLoadIdentity();
-        glTranslatef(tx, ty, 0.0f);
+        glTranslatef(translationX, translationY, 0.0f);
+        glScalef(scaleX, scaleY, 1.0f);
         glRotatef(angulo, 0.0f, 0.0f, 1.0f);
         drawHouse();
     glPopMatrix();
