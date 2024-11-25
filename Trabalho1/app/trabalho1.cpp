@@ -5,7 +5,6 @@
 
 double tx = 0.0f, ty = 0.0f, angulo = 0.0f;
 double left = -1.0f, right = 1.0f, bot = -1.0f, top = 1.0f;
-double px = 0.0f, py = 0.0f;
 
 /**
  * @brief Initializes the OpenGL environment.

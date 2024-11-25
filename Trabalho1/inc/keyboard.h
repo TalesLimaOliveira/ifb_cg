@@ -1,7 +1,7 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-extern double px, py, tx, ty, angulo, left, right, top, bot;
+extern double tx, ty, angulo, left, right, top, bot;
 enum Mode {NONE, TRANSLATE, ROTATE, SCALE};
 
 extern Mode currentMode;
