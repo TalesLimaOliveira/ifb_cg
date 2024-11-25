@@ -3,9 +3,8 @@
 
 extern double translationX, translationY, scaleX, scaleY;
 extern double angulo, left, right, top, bot;
-enum Mode {NONE, TRANSLATE, ROTATE, SCALE};
 
-extern Mode currentMode;
+enum Mode {NONE, TRANSLATE, ROTATE, SCALE};
 
 /**
  * @brief Handles keyboard input for standard keys.

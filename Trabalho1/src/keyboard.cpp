@@ -4,6 +4,7 @@
 #include <keyboard.h>
 
 Mode currentMode = NONE;
+bool isMirrored = false;
 
 /**
  * @brief Handles keyboard input for standard keys.
@@ -24,11 +25,13 @@ void keyboard(unsigned char key, int x, int y){
         left = bot = -1.0; right = top = 1.0;
         scaleX = scaleY = 1.0;
         currentMode = NONE;
+        isMirrored = false;
         break;
     
+    // Mirror the object
     case 'm': case 'M':
         scaleX = -scaleX;
-        currentMode = NONE;
+        isMirrored = !isMirrored;
         break;
 
     // Change mode
@@ -63,7 +66,11 @@ void keyboardSpecial(int key, int x, int y){
         } else if (currentMode == ROTATE){ // Rotate clockwise
             angulo += 0.5;
         } else if (currentMode == SCALE){ // Scale up
-            scaleX += 0.1; scaleY += 0.1;
+            if (isMirrored) {
+                scaleX -= 0.1; scaleY += 0.1;
+            } else {
+                scaleX += 0.1; scaleY += 0.1;
+            }
         }
         break;
 
@@ -75,7 +82,11 @@ void keyboardSpecial(int key, int x, int y){
         } else if (currentMode == ROTATE){ // Rotate counter-clockwise
             angulo -= 0.5;
         } else if (currentMode == SCALE){ // Scale down
-            scaleX -= 0.1; scaleY -= 0.1;
+            if (isMirrored) {
+                scaleX += 0.1; scaleY -= 0.1;
+            } else {
+                scaleX -= 0.1; scaleY -= 0.1;
+            }
         }
         break;
 
