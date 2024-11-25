@@ -21,6 +21,6 @@ void display();
  * @param font The font to use.
  * @param string The string to draw.
  */
-void drawText(void *font, char *string);
+void drawText(void *font,  const char *string);
 
 #endif // DRAW_H

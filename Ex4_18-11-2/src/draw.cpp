@@ -36,7 +36,7 @@ void drawHouse() {
     glEnd();
 }
 
-void drawText(void *font, char *string) {
+void drawText(void *font, const char *string) {
     while(*string) glutBitmapCharacter(font, *string++);
 }
 
