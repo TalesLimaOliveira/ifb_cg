@@ -16,4 +16,11 @@ void drawHouse();
  */
 void display();
 
+/**
+ * @brief Draws text on the screen.
+ * @param font The font to use.
+ * @param string The string to draw.
+ */
+void drawText(void *font, char *string);
+
 #endif // DRAW_H

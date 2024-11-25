@@ -36,6 +36,9 @@ void drawHouse() {
     glEnd();
 }
 
+void drawText(void *font, char *string) {
+    while(*string) glutBitmapCharacter(font, *string++);
+}
 
 void display() {
     glMatrixMode(GL_PROJECTION);
@@ -66,5 +69,16 @@ void display() {
         glPopMatrix();
     }
 
+    // Draw text
+    glColor3f(0, 0, 0);
+    glPushMatrix();
+        glTranslatef(0, 0, 0);
+        glScalef(0.2, 0.2, 0.2);
+        glLineWidth(100);
+        glRasterPos2f(0, 0);
+        drawText(GLUT_BITMAP_TIMES_ROMAN_24, "Casinha");
+    glPopMatrix();
+
+    glutSwapBuffers();
     glFlush();
 }
