@@ -66,8 +66,7 @@ void drawHelpBar() {
             modeColors[0] = WHITE;
             modeColors[1] = WHITE;
             modeColors[2] = WHITE; 
-            helpColors[2] = WHITE;
-            helpColors[3] = WHITE; break;
+            helpColors[2] = WHITE; break;
         default: break;
     }
 
@@ -79,6 +78,9 @@ void drawHelpBar() {
     // Change color of the axes if visible
     if (isAxesVisible){
         helpColors[3] = BLUE;
+    }
+    else{
+        helpColors[3] = WHITE;
     }
     
     // Draw help texts

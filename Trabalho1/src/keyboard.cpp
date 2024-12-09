@@ -6,6 +6,7 @@
 
 Mode currentMode = NONE;
 bool isMirrored = false;
+bool isAxesVisible = false;
 
 const double MIN_SCALE = 0.5;
 const double MAX_SCALE = 2.0;
@@ -34,6 +35,12 @@ void keyboard(unsigned char key, int x, int y){
     
     // Mirror the object
     case 'm': case 'M':
+        scaleX = -scaleX;
+        isMirrored = !isMirrored;
+        break;
+
+    // Show/hide axes
+    case 'a': case 'A':
         scaleX = -scaleX;
         isMirrored = !isMirrored;
         break;
