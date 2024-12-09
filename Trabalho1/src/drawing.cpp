@@ -80,7 +80,7 @@ void drawAxis(){
     glLineWidth(0.5f);
 
     glBegin(GL_LINES);
-        glVertex2f(0.0f, top); glVertex2f(0.0f, bot);
+        glVertex2f(0.0f, bot); glVertex2f(0.0f, top);
         glVertex2f(left, 0.0f); glVertex2f(right, 0.0f);
     glEnd();
 }
@@ -119,13 +119,10 @@ void drawHelpBar() {
     if (isAxesVisible){
         helpColors[3] = BLUE;
     }
-    else{
-        helpColors[3] = WHITE;
-    }
     
     // Draw help texts
     float offset = 0.0f;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         glColor3f(helpColors[i].r, helpColors[i].g, helpColors[i].b);
         glRasterPos2f(left + 0.05f + offset, bot + 0.05f);
         for (const char* c = helpText[i]; *c != '\0'; c++) {
@@ -154,13 +151,11 @@ void display(){
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    glPushMatrix();
-        drawAxis();
-    glPopMatrix();
-
-    glPushMatrix();
-
-    glPopMatrix();
+    if (isAxesVisible) {
+        glPushMatrix();
+            drawAxis();
+        glPopMatrix();
+    }
 
     glPushMatrix();
         glTranslatef(translationX, translationY, 0.0f);
