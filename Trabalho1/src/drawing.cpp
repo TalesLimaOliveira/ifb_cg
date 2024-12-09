@@ -46,7 +46,6 @@ void drawCross(){
 void drawHelpBar() {
     const char* helpText1 = "[ESC] Exit | [I] Reset | [M] Mirror |";
     const char* helpText2 = "[T] Translate | [R] Rotate | [S] Scale";
-    const char* modeText[] = {"[T] Translate", "[R] Rotate", "[S] Scale"};
     Color modeColors[] = {WHITE, WHITE, WHITE}; // Remove const
 
     // Change color of the selected mode
@@ -80,7 +79,7 @@ void drawHelpBar() {
     for (int i = 0; i < 3; i++) {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
         glRasterPos2f(left + 0.05f + offset, bot + 0.05f);
-        for (const char* c = modeText[i]; *c != '\0'; c++) {
+        for (const char* c = helpText2[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
         offset += 0.2f;
