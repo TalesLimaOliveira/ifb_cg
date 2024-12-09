@@ -1,40 +1,37 @@
-# 🏠 2D House Drawing Program
+# 🏠 Trabalho 1 - Tales Lima
 
 Este aplicativo é um exemplo prático de computação gráfica utilizando a biblioteca OpenGL. Ele permite desenhar e interagir com uma casa em 2D através do teclado, oferecendo funcionalidades de movimento, rotação, zoom, panorâmica e reset.
 
 ---
 
-## 🎮 Controles Interativos
+## 🎮 **Controles**
 
-### **🧭 Movimentação**
-- **⬆ Seta para Cima**: Move a casa para cima.
-- **⬇ Seta para Baixo**: Move a casa para baixo.
-- **⬅ Seta para Esquerda**: Move a casa para a esquerda.
-- **➡ Seta para Direita**: Move a casa para a direita.
+### **🔀 Translação**
+- **`T`**: Ativa o modo de translação.
+  - **⬆ Seta para Cima**: Move a casa para cima.
+  - **⬇ Seta para Baixo**: Move a casa para baixo.
+  - **⬅ Seta para Esquerda**: Move a casa para a esquerda.
+  - **➡ Seta para Direita**: Move a casa para a direita.
 
 ### **🔄 Rotação**
-- **Page Up**: Rotaciona a casa no sentido anti-horário.
-- **Page Down**: Rotaciona a casa no sentido horário.
+- **`R`**: Ativa o modo de rotação.
+  - **⬆ Seta para Cima**: Rotaciona no sentido anti-horário.
+  - **⬇ Seta para Baixo**: Rotaciona no sentido horário.
 
-### **🔍 Zoom**
-- **Home**: Dá zoom out (afasta a visão).
-- **End**: Dá zoom in (aproxima a visão).
+### **🔍 Escala**
+- **`S`**: Ativa o modo de escala.
+  - **⬆ Seta para Cima**: Aumenta o tamanho.
+  - **⬇ Seta para Baixo**: Reduz o tamanho.
 
-### **📍 Panorâmica**
-- **F9**: Move a visão para a direita.
-- **F10**: Move a visão para a esquerda.
-- **F11**: Move a visão para cima.
-- **F12**: Move a visão para baixo.
+### **🔁 Espelhamento**
+- **`M`**: Ativa o modo de espelhamento.
+  - Espelha o objeto horizontalmente ou verticalmente.
 
-### **🔀 Movimentação Diagonal**
-- **Q**: Move para cima e à esquerda.
-- **A**: Move para baixo e à esquerda.
-- **E**: Move para cima e à direita.
-- **D**: Move para baixo e à direita.
+### **🔙 Resetar Transformações**
+- **`I`**: Reseta todas as transformações aplicadas ao objeto.
 
-### **⚙️ Outras Funcionalidades**
-- **Insert**: Reseta a posição e rotação da casa para o centro da tela.
-- **ESC**: Fecha o aplicativo.
+### **❌ Sair do Aplicativo**
+- **`ESC`**: Encerra o aplicativo.
 
 ---
 
