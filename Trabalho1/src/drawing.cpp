@@ -86,7 +86,7 @@ void drawHelpBar() {
     offset = 0.0f;
     for (int i = 0; i < 3; i++) {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
-        glRasterPos2f(left + 0.05f + offset, bot + 0.075f);
+        glRasterPos2f(left + 0.05f + offset, bot + 0.25f);
         for (const char* c = modeText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
