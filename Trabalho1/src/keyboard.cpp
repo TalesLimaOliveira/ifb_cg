@@ -41,7 +41,6 @@ void keyboard(unsigned char key, int x, int y){
 
     // Show/hide axes
     case 'a': case 'A':
-        scaleX = -scaleX;
         isAxesVisible = !isAxesVisible;
         break;
 

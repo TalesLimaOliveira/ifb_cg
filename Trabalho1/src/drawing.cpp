@@ -80,8 +80,8 @@ void drawAxis(){
     glLineWidth(0.5f);
 
     glBegin(GL_LINES);
-        glVertex2f(0.0f, bot); glVertex2f(0.0f, top);
-        glVertex2f(left, 0.0f); glVertex2f(right, 0.0f);
+        glVertex2f(0.0f, -1.0f); glVertex2f(0.0f, 1.0f); // Vertical line
+        glVertex2f(-1.0f, 0.0f); glVertex2f(1.0f, 0.0f); // Horizontal line
     glEnd();
 }
 
