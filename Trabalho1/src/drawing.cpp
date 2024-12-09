@@ -45,29 +45,30 @@ void drawCross(){
  * @brief Draws the help bar at the bottom of the screen.
  */
 void drawHelpBar() {
-    const char* helpText1[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror"};
-    const char* helpText2[] = {"[T] Translate", "[R] Rotate", "[S] Scale"};
-    Color helpColors[] = {WHITE, WHITE, WHITE};
+    const char* helpText[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror"};
+    const char* modeText[] = {"[R] Rotate", "[T] Translate", "[S] Scale"};
+    Color helpColors[] = {RED, WHITE, WHITE};
     Color modeColors[] = {WHITE, WHITE, WHITE};
 
     // Change color of the selected mode
     switch (currentMode) {
-        case TRANSLATE:
-            modeColors[0] = GREEN; break;
         case ROTATE:
+            modeColors[0] = GREEN; break;
+        case TRANSLATE:
             modeColors[1] = GREEN; break;
         case SCALE:
             modeColors[2] = GREEN; break;
         case NONE: 
             modeColors[0] = WHITE;
             modeColors[1] = WHITE;
-            modeColors[2] = WHITE; break;
+            modeColors[2] = WHITE; 
+            helpColors[2] = WHITE; break;
         default: break;
     }
 
     // Change color of the mirror text if mirrored
     if (isMirrored) {
-        helpColors[2] = GREEN;
+        helpColors[2] = BLUE;
     }
 
     // Draw help texts
@@ -75,21 +76,21 @@ void drawHelpBar() {
     for (int i = 0; i < 3; i++) {
         glColor3f(helpColors[i].r, helpColors[i].g, helpColors[i].b);
         glRasterPos2f(left + 0.05f + offset, bot + 0.1f);
-        for (const char* c = helpText1[i]; *c != '\0'; c++) {
+        for (const char* c = helpText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
-        offset += 0.2f;
+        offset += 0.45f;
     }
 
     // Draw mode texts with respective colors
     offset = 0.0f;
     for (int i = 0; i < 3; i++) {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
-        glRasterPos2f(left + 0.05f + offset, bot + 0.05f);
-        for (const char* c = helpText2[i]; *c != '\0'; c++) {
+        glRasterPos2f(left + 0.05f + offset, bot + 0.075f);
+        for (const char* c = modeText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
-        offset += 0.2f;
+        offset += 0.45f;
     }
 }
 
