@@ -6,34 +6,38 @@
 extern double translationX, translationY, scaleX, scaleY;
 extern double angulo, left, right, bot, top;
 extern Mode currentMode;
-extern bool isMirrored;
+extern bool isMirrored, isAxesVisible;
 
 /**
  * @brief Draws a house.
  */
 void drawHouse(){
-    glLineWidth(3.0f);
+
+
+    // BASE
+    glLineWidth(2.0f);
     glBegin(GL_LINE_LOOP);
         glColor3f(WHITE.r, WHITE.g, WHITE.b);
-        glVertex2f(-0.2f, -0.2f);
-        glVertex2f(-0.2f,  0.1f);
-        glVertex2f( 0.2f,  0.1f);
-        glVertex2f( 0.2f, -0.2f);
+        glVertex2f(-0.2f, -0.2f); // bot left
+        glVertex2f(-0.2f,  0.1f); // top left
+        glVertex2f( 0.2f,  0.1f); // top right
+        glVertex2f( 0.2f, -0.2f); // bot right
     glEnd();
 
+    // ROOF
     glBegin(GL_TRIANGLES);
-        glColor3f(RED.r, RED.g, RED.b); glVertex2f(-0.2f, 0.1f);
-        glColor3f(GREEN.r, GREEN.g, GREEN.b); glVertex2f(0.0f, 0.25f);
-        glColor3f(BLUE.r, BLUE.g, BLUE.b); glVertex2f(0.2f, 0.1f);
+        glColor3f(RED.r, RED.g, RED.b); glVertex2f(-0.2f, 0.1f);        // bot left
+        glColor3f(GREEN.r, GREEN.g, GREEN.b); glVertex2f(0.0f, 0.25f);  // top center
+        glColor3f(BLUE.r, BLUE.g, BLUE.b); glVertex2f(0.2f, 0.1f);      // bot right
     glEnd();
 }
 
 /**
- * @brief Draws a cross.
+ * @brief Draws a cross for the axis.
  */
-void drawCross(){
+void drawAxis(){
     glColor3f(WHITE.r, WHITE.g, WHITE.b);
-    glLineWidth(1.0f);
+    glLineWidth(0.5f);
 
     glBegin(GL_LINES);
         glVertex2f(0.0f, top); glVertex2f(0.0f, bot);
@@ -45,10 +49,10 @@ void drawCross(){
  * @brief Draws the help bar at the bottom of the screen.
  */
 void drawHelpBar() {
-    const char* helpText[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror"};
     const char* modeText[] = {"[R] Rotate", "[T] Translate", "[S] Scale"};
-    Color helpColors[] = {RED, WHITE, WHITE};
+    const char* helpText[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror", "[A] Axes"};
     Color modeColors[] = {WHITE, WHITE, WHITE};
+    Color helpColors[] = {RED, WHITE, WHITE, WHITE};
 
     // Change color of the selected mode
     switch (currentMode) {
@@ -62,15 +66,21 @@ void drawHelpBar() {
             modeColors[0] = WHITE;
             modeColors[1] = WHITE;
             modeColors[2] = WHITE; 
-            helpColors[2] = WHITE; break;
+            helpColors[2] = WHITE;
+            helpColors[3] = WHITE; break;
         default: break;
     }
 
     // Change color of the mirror text if mirrored
-    if (isMirrored) {
+    if (isMirrored){
         helpColors[2] = BLUE;
     }
 
+    // Change color of the axes if visible
+    if (isAxesVisible){
+        helpColors[3] = BLUE;
+    }
+    
     // Draw help texts
     float offset = 0.0f;
     for (int i = 0; i < 3; i++) {
@@ -98,13 +108,17 @@ void drawHelpBar() {
  * @brief The display callback function.
  */
 void display(){
-    glClearColor(BLACK.r, BLACK.g, BLACK.b, 1.0f);
+    glClearColor(BACKGROUND.r, BACKGROUND.g, BACKGROUND.b, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    // glPushMatrix();
-    //     drawCross();
-    // glPopMatrix();
+    glPushMatrix();
+        drawCross();
+    glPopMatrix();
+
+    glPushMatrix();
+
+    glPopMatrix();
 
     glPushMatrix();
         glTranslatef(translationX, translationY, 0.0f);
@@ -112,8 +126,10 @@ void display(){
         glRotatef(angulo, 0.0f, 0.0f, 1.0f);
         drawHouse();
     glPopMatrix();
-
-    drawHelpBar();
+    
+    glPushMatrix();
+        drawHelpBar();
+    glPopMatrix();
 
     glFlush();
 }
