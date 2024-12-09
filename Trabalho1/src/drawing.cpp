@@ -46,13 +46,14 @@ void drawCross(){
 void drawHelpBar() {
     const char* helpText = "[ESC] Exit | [I] Reset | [M] Mirror |";
     const char* modeText[] = {"[T] Translate", "[R] Rotate", "[S] Scale"};
-    const Color modeColors[] = {WHITE, WHITE, WHITE};
+    Color modeColors[] = {WHITE, WHITE, WHITE}; // Remove const
 
     // Change color of the selected mode
     switch (currentMode) {
         case TRANSLATE: modeColors[0] = GREEN; break;
         case ROTATE: modeColors[1] = GREEN; break;
         case SCALE: modeColors[2] = GREEN; break;
+        case NONE: modeColors[] = {WHITE, WHITE, WHITE}; break;
         default: break;
     }
 
