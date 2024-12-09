@@ -30,11 +30,12 @@ void reshape(GLsizei w, GLsizei h){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    // Check the aspect ratio of the screen to adjust the orthographic projection
-    if (w <= h)
-        gluOrtho2D(left, right, bot, bot + (right - left) * h / w);
-    else
-        gluOrtho2D(left, left + (right - left) * w / h, bot, top);
+    // Adjust the orthographic projection to maintain the aspect ratio
+    if (w <= h) {
+        gluOrtho2D(left, right, bot * (GLfloat)h / (GLfloat)w, top * (GLfloat)h / (GLfloat)w);
+    } else {
+        gluOrtho2D(left * (GLfloat)w / (GLfloat)h, right * (GLfloat)w / (GLfloat)h, bot, top);
+    }
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
