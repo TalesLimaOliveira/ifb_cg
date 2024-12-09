@@ -44,7 +44,7 @@ void drawCross(){
 void drawHelpBar() {
     glColor3f(WHITE.r, WHITE.g, WHITE.b);
     glRasterPos2f(left + 0.05f, bot + 0.05f);
-    const char* helpText = "Keys: [ESC] Exit | [I] Reset | [M] Mirror | [T] Translate | [R] Rotate | [S] Scale";
+    const char* helpText = "[ESC] Exit | [I] Reset | [M] Mirror | [T] Translate | [R] Rotate | [S] Scale";
     for (const char* c = helpText; *c != '\0'; c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
     }
