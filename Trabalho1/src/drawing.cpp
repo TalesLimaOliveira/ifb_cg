@@ -155,7 +155,7 @@ void display(){
     glLoadIdentity();
 
     glPushMatrix();
-        drawCross();
+        drawAxis();
     glPopMatrix();
 
     glPushMatrix();
