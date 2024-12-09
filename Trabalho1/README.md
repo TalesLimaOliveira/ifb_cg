@@ -1,10 +1,22 @@
-# 🏠 Trabalho 1 - Tales Lima
+# 🏠 Computação Gráfica - Trabalho 1
 
-Este aplicativo é um exemplo prático de computação gráfica utilizando a biblioteca OpenGL. Ele permite desenhar e interagir com uma casa em 2D através do teclado, oferecendo funcionalidades de movimento, rotação, zoom, panorâmica e reset.
+## 👨‍🏫 Professor: Raimundo Vasconcelos
+## 👨‍🎓 Aluno: [Tales Oliveira](https://github.com/TalesLimaOliveira)
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Language-C/C++-blue" alt="Language">
+    <img src="https://img.shields.io/badge/Build-Makefile-lightblue" alt="Build">
+    <img src="https://img.shields.io/badge/API-OpenGL-success" alt="API">
+</p>
 
 ---
 
 ## 🎮 **Controles**
+
+### **🔄 Rotação**
+- **`R`**: Ativa o modo de rotação.
+  - **⬆ Seta para Cima**: Rotaciona no sentido anti-horário.
+  - **⬇ Seta para Baixo**: Rotaciona no sentido horário.
 
 ### **🔀 Translação**
 - **`T`**: Ativa o modo de translação.
@@ -12,11 +24,6 @@ Este aplicativo é um exemplo prático de computação gráfica utilizando a bib
   - **⬇ Seta para Baixo**: Move a casa para baixo.
   - **⬅ Seta para Esquerda**: Move a casa para a esquerda.
   - **➡ Seta para Direita**: Move a casa para a direita.
-
-### **🔄 Rotação**
-- **`R`**: Ativa o modo de rotação.
-  - **⬆ Seta para Cima**: Rotaciona no sentido anti-horário.
-  - **⬇ Seta para Baixo**: Rotaciona no sentido horário.
 
 ### **🔍 Escala**
 - **`S`**: Ativa o modo de escala.
@@ -26,6 +33,9 @@ Este aplicativo é um exemplo prático de computação gráfica utilizando a bib
 ### **🔁 Espelhamento**
 - **`M`**: Ativa o modo de espelhamento.
   - Espelha o objeto horizontalmente ou verticalmente.
+
+### **➕ Eixos**
+- **`A`**: Mostra/Esconde eixos X e Y.
 
 ### **🔙 Resetar Transformações**
 - **`I`**: Reseta todas as transformações aplicadas ao objeto.
