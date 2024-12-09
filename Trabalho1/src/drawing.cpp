@@ -79,7 +79,7 @@ void drawHelpBar() {
         for (const char* c = helpText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
-        offset += 0.3f;
+        offset += 0.5f;
     }
 
     // Draw mode texts with respective colors
@@ -90,7 +90,7 @@ void drawHelpBar() {
         for (const char* c = modeText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
-        offset += 0.45f;
+        offset += 0.5f;
     }
 }
 
@@ -102,9 +102,9 @@ void display(){
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    glPushMatrix();
-        drawCross();
-    glPopMatrix();
+    // glPushMatrix();
+    //     drawCross();
+    // glPopMatrix();
 
     glPushMatrix();
         glTranslatef(translationX, translationY, 0.0f);
