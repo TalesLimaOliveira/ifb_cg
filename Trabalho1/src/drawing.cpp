@@ -53,7 +53,9 @@ void drawHelpBar() {
         case TRANSLATE: modeColors[0] = GREEN; break;
         case ROTATE: modeColors[1] = GREEN; break;
         case SCALE: modeColors[2] = GREEN; break;
-        case NONE: modeColors[] = {WHITE, WHITE, WHITE}; break;
+        case NONE: 
+            modeColors[0] = WHITE; modeColors[1] = WHITE;
+            modeColors[2] = WHITE; break;
         default: break;
     }
 
