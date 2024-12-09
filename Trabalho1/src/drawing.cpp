@@ -6,6 +6,7 @@
 extern double translationX, translationY, scaleX, scaleY;
 extern double angulo, left, right, bot, top;
 extern Mode currentMode;
+extern bool isMirrored;
 
 /**
  * @brief Draws a house.
