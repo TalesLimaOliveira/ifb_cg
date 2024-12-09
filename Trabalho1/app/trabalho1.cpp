@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 #include <drawing.h>
 #include <keyboard.h>
+#include <colors.h>
 
 double translationX = 0.0f, translationY = 0.0f;
 double scaleX = 1.0f, scaleY = 1.0f, angulo = 0.0f;
