@@ -79,7 +79,7 @@ void drawHelpBar() {
         for (const char* c = helpText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
         }
-        offset += 0.45f;
+        offset += 0.3f;
     }
 
     // Draw mode texts with respective colors
@@ -98,7 +98,7 @@ void drawHelpBar() {
  * @brief The display callback function.
  */
 void display(){
-    glClearColor(BG.r, BG.g, BG.b, 1.0f);
+    glClearColor(BLACK.r, BLACK.g, BLACK.b, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
