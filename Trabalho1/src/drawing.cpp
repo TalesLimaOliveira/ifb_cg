@@ -4,6 +4,7 @@
 
 extern double translationX, translationY, scaleX, scaleY;
 extern double angulo, left, right, bot, top;
+extern Mode currentMode;
 
 /**
  * @brief Draws a house.
@@ -42,11 +43,33 @@ void drawCross(){
  * @brief Draws the help bar at the bottom of the screen.
  */
 void drawHelpBar() {
+    const char* helpText = "[ESC] Exit | [I] Reset | [M] Mirror |";
+    const char* modeText[] = {"[T] Translate", "[R] Rotate", "[S] Scale"};
+    const Color modeColors[] = {WHITE, WHITE, WHITE};
+
+    // Change color of the selected mode
+    switch (currentMode) {
+        case TRANSLATE: modeColors[0] = GREEN; break;
+        case ROTATE: modeColors[1] = GREEN; break;
+        case SCALE: modeColors[2] = GREEN; break;
+        default: break;
+    }
+
     glColor3f(WHITE.r, WHITE.g, WHITE.b);
     glRasterPos2f(left + 0.05f, bot + 0.05f);
-    const char* helpText = "[ESC] Exit | [I] Reset | [M] Mirror | [T] Translate | [R] Rotate | [S] Scale";
     for (const char* c = helpText; *c != '\0'; c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+    }
+
+    // Draw mode texts with respective colors
+    float offset = 0.0f;
+    for (int i = 0; i < 3; i++) {
+        glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
+        glRasterPos2f(left + 0.05f + offset, bot + 0.05f);
+        for (const char* c = modeText[i]; *c != '\0'; c++) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+        }
+        offset += 0.2f;
     }
 }
 
