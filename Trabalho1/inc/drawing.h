@@ -16,4 +16,9 @@ void drawCross();
  */
 void display();
 
+/**
+ * @brief Draws the help bar at the bottom of the screen.
+ */
+void drawHelpBar();
+
 #endif // DRAWING_H
