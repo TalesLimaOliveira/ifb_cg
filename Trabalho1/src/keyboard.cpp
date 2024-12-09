@@ -7,6 +7,9 @@
 Mode currentMode = NONE;
 bool isMirrored = false;
 
+const double MIN_SCALE = 0.5;
+const double MAX_SCALE = 2.0;
+
 /**
  * @brief Handles keyboard input for standard keys.
  * @param key The key that was pressed.
@@ -68,9 +71,13 @@ void keyboardSpecial(int key, int x, int y){
             angulo += 0.5;
         } else if (currentMode == SCALE){ // Scale up
             if (isMirrored) {
-                scaleX -= 0.1; scaleY += 0.1;
+                if (scaleX - 0.1 >= -MAX_SCALE && scaleY + 0.1 <= MAX_SCALE) {
+                    scaleX -= 0.1; scaleY += 0.1;
+                }
             } else {
-                scaleX += 0.1; scaleY += 0.1;
+                if (scaleX + 0.1 <= MAX_SCALE && scaleY + 0.1 <= MAX_SCALE) {
+                    scaleX += 0.1; scaleY += 0.1;
+                }
             }
         }
         break;
@@ -84,9 +91,13 @@ void keyboardSpecial(int key, int x, int y){
             angulo -= 0.5;
         } else if (currentMode == SCALE){ // Scale down
             if (isMirrored) {
-                scaleX += 0.1; scaleY -= 0.1;
+                if (scaleX + 0.1 <= -MIN_SCALE && scaleY - 0.1 >= MIN_SCALE) {
+                    scaleX += 0.1; scaleY -= 0.1;
+                }
             } else {
-                scaleX -= 0.1; scaleY -= 0.1;
+                if (scaleX - 0.1 >= MIN_SCALE && scaleY - 0.1 >= MIN_SCALE) {
+                    scaleX -= 0.1; scaleY -= 0.1;
+                }
             }
         }
         break;
