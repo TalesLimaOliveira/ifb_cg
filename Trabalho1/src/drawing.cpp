@@ -44,9 +44,10 @@ void drawCross(){
  * @brief Draws the help bar at the bottom of the screen.
  */
 void drawHelpBar() {
-    const char* helpText1 = "[ESC] Exit | [I] Reset | [M] Mirror |";
-    const char* helpText2 = "[T] Translate | [R] Rotate | [S] Scale";
-    Color modeColors[] = {WHITE, WHITE, WHITE}; // Remove const
+    const char* helpText1[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror"};
+    const char* helpText2[] = {"[T] Translate", "[R] Rotate", "[S] Scale"};
+    Color helpColors[] = {WHITE, WHITE, WHITE};
+    Color modeColors[] = {WHITE, WHITE, WHITE};
 
     // Change color of the selected mode
     switch (currentMode) {
@@ -63,19 +64,24 @@ void drawHelpBar() {
         default: break;
     }
 
-    glColor3f(WHITE.r, WHITE.g, WHITE.b);
-    glRasterPos2f(left + 0.05f, bot + 0.1f);
-    for (const char* c = helpText1; *c != '\0'; c++) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+    // Change color of the mirror text if mirrored
+    if (isMirrored) {
+        helpColors[2] = GREEN;
     }
 
-    glRasterPos2f(left + 0.05f, bot + 0.05f);
-    for (const char* c = helpText2; *c != '\0'; c++) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+    // Draw help texts
+    float offset = 0.0f;
+    for (int i = 0; i < 3; i++) {
+        glColor3f(helpColors[i].r, helpColors[i].g, helpColors[i].b);
+        glRasterPos2f(left + 0.05f + offset, bot + 0.1f);
+        for (const char* c = helpText1[i]; *c != '\0'; c++) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+        }
+        offset += 0.2f;
     }
 
     // Draw mode texts with respective colors
-    float offset = 0.0f;
+    offset = 0.0f;
     for (int i = 0; i < 3; i++) {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
         glRasterPos2f(left + 0.05f + offset, bot + 0.05f);
