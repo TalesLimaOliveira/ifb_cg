@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <GL/glut.h>
-#include <drawing.h>
-#include <keyboard.h>
+#include "drawing.h"
+#include "keyboard.h"
+#include "colors.h"
 
 Mode currentMode = NONE;
 bool isMirrored = false;

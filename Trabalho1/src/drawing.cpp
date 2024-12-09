@@ -1,6 +1,7 @@
 #include <GL/glut.h>
-#include <drawing.h>
-#include <colors.h>
+#include "drawing.h"
+#include "colors.h"
+#include "keyboard.h"
 
 extern double translationX, translationY, scaleX, scaleY;
 extern double angulo, left, right, bot, top;
