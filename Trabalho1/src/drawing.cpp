@@ -46,6 +46,7 @@ void drawCross(){
 void drawHelpBar() {
     const char* helpText1 = "[ESC] Exit | [I] Reset | [M] Mirror |";
     const char* helpText2 = "[T] Translate | [R] Rotate | [S] Scale";
+    const char* modeText[] = {"[T] Translate", "[R] Rotate", "[S] Scale"};
     Color modeColors[] = {WHITE, WHITE, WHITE}; // Remove const
 
     // Change color of the selected mode
