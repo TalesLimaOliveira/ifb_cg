@@ -12,23 +12,63 @@ extern bool isMirrored, isAxesVisible;
  * @brief Draws a house.
  */
 void drawHouse(){
-
-
     // BASE
     glLineWidth(2.0f);
     glBegin(GL_LINE_LOOP);
         glColor3f(WHITE.r, WHITE.g, WHITE.b);
-        glVertex2f(-0.2f, -0.2f); // bot left
-        glVertex2f(-0.2f,  0.1f); // top left
-        glVertex2f( 0.2f,  0.1f); // top right
-        glVertex2f( 0.2f, -0.2f); // bot right
+        glVertex2f(-0.4f, -0.4f); // BOT LEFT
+        glVertex2f(-0.4f,  0.2f); // TOP LEFT
+        glVertex2f( 0.4f,  0.2f); // TOP RIGHT
+        glVertex2f( 0.4f, -0.4f); // BOT RIGHT
     glEnd();
 
     // ROOF
     glBegin(GL_TRIANGLES);
-        glColor3f(RED.r, RED.g, RED.b); glVertex2f(-0.2f, 0.1f);        // bot left
-        glColor3f(GREEN.r, GREEN.g, GREEN.b); glVertex2f(0.0f, 0.25f);  // top center
-        glColor3f(BLUE.r, BLUE.g, BLUE.b); glVertex2f(0.2f, 0.1f);      // bot right
+        glColor3f(RED.r, RED.g, RED.b); glVertex2f(-0.4f, 0.2f);        // BOT LEFT
+        glColor3f(GREEN.r, GREEN.g, GREEN.b); glVertex2f(0.0f, 0.5f);   // TOP CENTER
+        glColor3f(BLUE.r, BLUE.g, BLUE.b); glVertex2f(0.4f, 0.2f);      // BOT RIGHT
+    glEnd();
+
+    // DOOR
+    glBegin(GL_QUADS);
+        glColor3f(BLACK.r, BLACK.g, BLACK.b);
+        glVertex2f(-0.1f, -0.4f); // BOT LEFT
+        glVertex2f(-0.1f, -0.1f); // TOP LEFT
+        glVertex2f( 0.1f, -0.1f); // TOP RIGHT
+        glVertex2f( 0.1f, -0.4f); // BOT RIGHT
+    glEnd();
+
+    // WINDOWS
+    glBegin(GL_QUADS);
+        glColor3f(WHITE.r, WHITE.g, WHITE.b); // WHITE
+        glVertex2f(-0.3f, -0.1f); // BOT LEFT
+        glVertex2f(-0.3f,  0.1f); // TOP LEFT
+        glVertex2f(-0.1f,  0.1f); // TOP RIGHT
+        glVertex2f(-0.1f, -0.1f); // BOT RIGHT 
+    glEnd();
+
+    glBegin(GL_QUADS);
+        glColor3f(WHITE.r, WHITE.g, WHITE.b); // WHITE
+        glVertex2f(0.1f, -0.1f); // BOT LEFT
+        glVertex2f(0.1f,  0.1f); // TOP LEFT
+        glVertex2f(0.3f,  0.1f); // TOP RIGHT
+        glVertex2f(0.3f, -0.1f); // BOT RIGHT 
+    glEnd();
+
+    // BARS
+    glBegin(GL_LINES);
+        glColor3f(BLACK.r, BLACK.g, BLACK.b); // BLACK
+        glVertex2f(-0.2f, 0.1f); // H TOP
+        glVertex2f(-0.2f, -0.1f); // H BOT
+        glVertex2f(-0.3f, 0.0f); // V LEFT
+        glVertex2f(-0.1f, 0.0f); // V RIGHT
+    glEnd();
+
+    glBegin(GL_LINES);
+        glVertex2f(0.2f, 0.1f); // H TOP
+        glVertex2f(0.2f, -0.1f); // H BOT
+        glVertex2f(0.1f, 0.0f); // V LEFT
+        glVertex2f(0.3f, 0.0f); // V RIGHT
     glEnd();
 }
 
