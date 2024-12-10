@@ -49,10 +49,10 @@ void drawHouse(){
     // BARS
     glBegin(GL_LINES);
         glColor3f(WHITE.r, WHITE.g, WHITE.b);
-        glVertex2f(0.2f, 0.1f); // H TOP
-        glVertex2f(0.2f, -0.1f); // H BOT
-        glVertex2f(0.1f, 0.0f); // V LEFT
-        glVertex2f(0.3f, 0.0f); // V RIGHT
+        glVertex2f(0.2f, 0.0f); // H TOP
+        glVertex2f(0.2f, -0.15f); // H BOT
+        glVertex2f(0.1f, 0.075f); // V LEFT
+        glVertex2f(0.3f, 0.075f); // V RIGHT
     glEnd();
 }
 
