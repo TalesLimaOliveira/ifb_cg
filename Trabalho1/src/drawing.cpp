@@ -1,5 +1,6 @@
 #include <GL/glut.h>
 #include <stdlib.h>
+#include <cmath>
 #include "drawing.h"
 #include "colors.h"
 #include "keyboard.h"
@@ -58,6 +59,78 @@ void drawHouse(){
 }
 
 /**
+ * @brief Draws a house2.
+ */
+void drawHouse2(){
+    // Draw the front base
+    glColor3f(HOUSE2_BASE_FRONT.r, HOUSE2_BASE_FRONT.g, HOUSE2_BASE_FRONT.b);
+    glBegin(GL_QUADS);
+        glVertex2f(-0.5f, -0.5f); // Bottom Left
+        glVertex2f(-0.5f,  0.5f); // Top Left
+        glVertex2f( 0.5f,  0.5f); // Top Right
+        glVertex2f( 0.5f, -0.5f); // Bottom Right
+    glEnd();
+
+    // Draw the front roof
+    glColor3f(HOUSE2_ROOF_FRONT.r, HOUSE2_ROOF_FRONT.g, HOUSE2_ROOF_FRONT.b);
+    glBegin(GL_TRIANGLES);
+        glVertex2f(-0.5f,  0.5f); // Bottom Left
+        glVertex2f( 0.0f,  1.0f); // Top Center
+        glVertex2f( 0.5f,  0.5f); // Bottom Right
+    glEnd();
+
+    // Draw the circular window on the front roof
+    glColor3f(HOUSE2_WINDOW_FRONT.r, HOUSE2_WINDOW_FRONT.g, HOUSE2_WINDOW_FRONT.b);
+    drawCircle(0.0f, 0.75f, 0.1f, 50);
+
+    // Draw the side base
+    glColor3f(HOUSE2_BASE_SIDE.r, HOUSE2_BASE_SIDE.g, HOUSE2_BASE_SIDE.b);
+    glBegin(GL_QUADS);
+        glVertex2f( 0.5f, -0.5f); // Bottom Left
+        glVertex2f( 0.5f,  0.5f); // Top Left
+        glVertex2f( 1.5f,  0.6f); // Top Right
+        glVertex2f( 1.5f, -0.4f); // Bottom Right
+    glEnd();
+
+    // Draw the square window on the side base
+    glColor3f(HOUSE2_WINDOW_SIDE.r, HOUSE2_WINDOW_SIDE.g, HOUSE2_WINDOW_SIDE.b);
+    glBegin(GL_QUADS);
+        glVertex2f( 0.9f, -0.1f); // Bottom Left
+        glVertex2f( 0.9f,  0.2f); // Top Left
+        glVertex2f( 1.2f,  0.2f); // Top Right
+        glVertex2f( 1.2f, -0.1f); // Bottom Right
+    glEnd();
+
+    // Draw the side roof
+    glColor3f(HOUSE2_ROOF_SIDE.r, HOUSE2_ROOF_SIDE.g, HOUSE2_ROOF_SIDE.b);
+    glBegin(GL_QUADS);
+        glVertex2f( 0.5f,  0.5f); // Bottom Left
+        glVertex2f( 0.0f,  1.0f); // Top Left
+        glVertex2f( 1.4f,  1.1f); // Top Right
+        glVertex2f( 1.5f,  0.6f); // Bottom Right
+    glEnd();
+}
+
+/**
+ * @brief Draws a Circle.
+ * @param cx The x-coordinate of the center of the circle.
+ * @param cy The y-coordinate of the center of the circle.
+ * @param radius The radius of the circle.
+ * @param segments The number of segments used to draw the circle.
+ */
+void drawCircle(float cx, float cy, float radius, int segments) {
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(cx, cy); // Center of the circle
+    for (int i = 0; i <= segments; i++) {
+        float angle = 2.0f * M_PI * i / segments;
+        float x = cx + radius * cos(angle);
+        float y = cy + radius * sin(angle);
+        glVertex2f(x, y);
+    }
+    glEnd();
+}
+
+/**
  * @brief Draws a cross for the axis.
  */
 void drawAxis(){
@@ -69,7 +142,6 @@ void drawAxis(){
         glVertex2f(-1.0f, 0.0f); glVertex2f(1.0f, 0.0f); // Horizontal line
     glEnd();
 }
-
 
 /**
  * @brief Draws the help bar at the bottom of the screen.
@@ -142,7 +214,7 @@ void display(){
         glTranslatef(translationX, translationY, 0.0f);
         glScalef(scaleX, scaleY, 1.0f);
         glRotatef(angulo, 0.0f, 0.0f, 1.0f);
-        drawHouse();
+        drawHouse2();
     glPopMatrix();
     
     glPushMatrix();

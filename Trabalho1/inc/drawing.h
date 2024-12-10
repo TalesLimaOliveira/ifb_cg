@@ -5,6 +5,9 @@
  * @brief Draws a house.
  */
 void drawHouse();
+void drawHouse2();
+
+void drawCircle(float cx, float cy, float radius, int segments);
 
 /**
  * @brief Draws a cross.
