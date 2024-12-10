@@ -1,4 +1,5 @@
 #include <GL/glut.h>
+#include <stdlib.h>
 #include "drawing.h"
 #include "colors.h"
 #include "keyboard.h"
@@ -25,21 +26,21 @@ void drawHouse(){
     glBegin(GL_TRIANGLES);
         glColor3f(RED.r, RED.g, RED.b); glVertex2f(-0.4f, 0.2f);        // BOT LEFT
         glColor3f(GREEN.r, GREEN.g, GREEN.b); glVertex2f(0.0f, 0.5f);   // TOP CENTER
-        glColor3f(BLUE.r, BLUE.b, BLUE.b); glVertex2f(0.4f, 0.2f);      // BOT RIGHT
+        glColor3f(BLUE.r, BLUE.g, BLUE.b); glVertex2f(0.4f, 0.2f);      // BOT RIGHT
     glEnd();
 
     // DOOR
     glBegin(GL_QUADS);
-        glColor3f(BLACK.r, BLACK.g, BLACK.b);
-        glVertex2f(-0.3f, -0.4f); // BOT LEFT
+        glColor3f(INSIDE.r, INSIDE.g, INSIDE.b);
+        glVertex2f(-0.3f, -0.36f); // BOT LEFT
         glVertex2f(-0.3f, 0.0f);  // TOP LEFT
         glVertex2f(-0.1f, 0.0f);  // TOP RIGHT
-        glVertex2f(-0.1f, -0.4f); // BOT RIGHT
+        glVertex2f(-0.1f, -0.36f); // BOT RIGHT
     glEnd();
 
     // WINDOW
     glBegin(GL_QUADS);
-        glColor3f(BLACK.r, BLACK.g, BLACK.b);
+        glColor3f(INSIDE.r, INSIDE.g, INSIDE.b);
         glVertex2f(0.1f, -0.15f); // BOT LEFT
         glVertex2f(0.1f,  0.0f);  // TOP LEFT
         glVertex2f(0.3f,  0.0f);  // TOP RIGHT
@@ -51,8 +52,8 @@ void drawHouse(){
         glColor3f(WHITE.r, WHITE.g, WHITE.b);
         glVertex2f(0.2f, 0.0f); // H TOP
         glVertex2f(0.2f, -0.15f); // H BOT
-        glVertex2f(0.1f, 0.075f); // V LEFT
-        glVertex2f(0.3f, 0.075f); // V RIGHT
+        glVertex2f(0.1f, -0.075f); // V LEFT
+        glVertex2f(0.3f, -0.075f); // V RIGHT
     glEnd();
 }
 
@@ -69,12 +70,13 @@ void drawAxis(){
     glEnd();
 }
 
+
 /**
  * @brief Draws the help bar at the bottom of the screen.
  */
 void drawHelpBar() {
     const char* modeText[] = {"[R] Rotate", "[T] Translate", "[S] Scale"};
-    const char* helpText[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror", "[A] Axes"};
+    const char* helpText[] = {"[ESC] Exit", "[I] Reset", "[M] Mirror", "[A] Axis"};
     Color modeColors[] = {WHITE, WHITE, WHITE};
     Color helpColors[] = {RED, WHITE, WHITE, WHITE};
 
@@ -95,16 +97,11 @@ void drawHelpBar() {
     }
 
     // Change color of the mirror text if mirrored
-    if (isMirrored){
-        helpColors[2] = BLUE;
-    }
-
+    if (isMirrored){helpColors[2] = BLUE;}
     // Change color of the axes if visible
-    if (isAxesVisible){
-        helpColors[3] = BLUE;
-    }
+    if (isAxesVisible){helpColors[3] = BLUE;}
     
-    // Draw help texts
+    // Draw help texts (BOT)
     float offset = 0.0f;
     for (int i = 0; i < 4; i++) {
         glColor3f(helpColors[i].r, helpColors[i].g, helpColors[i].b);
@@ -115,7 +112,7 @@ void drawHelpBar() {
         offset += 0.5f;
     }
 
-    // Draw mode texts with respective colors
+    // Draw mode texts (TOP)
     offset = 0.0f;
     for (int i = 0; i < 3; i++) {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);

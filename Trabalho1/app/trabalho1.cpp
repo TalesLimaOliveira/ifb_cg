@@ -4,6 +4,8 @@
 #include "keyboard.h"
 #include "colors.h"
 
+//? IGNORE: scp -r . rasp@rasp:/home/rasp/Documents/ifb_cg/Trabalho1
+
 double translationX = 0.0f, translationY = 0.0f;
 double scaleX = 1.0f, scaleY = 1.0f, angulo = 0.0f;
 double left = -1.0f, right = 1.0f, bot = -1.0f, top = 1.0f;
