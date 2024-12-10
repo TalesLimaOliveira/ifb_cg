@@ -32,18 +32,18 @@ void drawHouse(){
     glBegin(GL_QUADS);
         glColor3f(BLACK.r, BLACK.g, BLACK.b);
         glVertex2f(-0.3f, -0.4f); // BOT LEFT
-        glVertex2f(-0.3f, -0.15f); // TOP LEFT
-        glVertex2f(-0.1f, -0.15f); // TOP RIGHT
+        glVertex2f(-0.3f, 0.0f);  // TOP LEFT
+        glVertex2f(-0.1f, 0.0f);  // TOP RIGHT
         glVertex2f(-0.1f, -0.4f); // BOT RIGHT
     glEnd();
 
     // WINDOW
     glBegin(GL_QUADS);
         glColor3f(BLACK.r, BLACK.g, BLACK.b);
-        glVertex2f(0.1f, -0.1f); // BOT LEFT
-        glVertex2f(0.1f,  0.15f); // TOP LEFT
-        glVertex2f(0.3f,  0.15f); // TOP RIGHT
-        glVertex2f(0.3f, -0.1f); // BOT RIGHT 
+        glVertex2f(0.1f, -0.15f); // BOT LEFT
+        glVertex2f(0.1f,  0.0f);  // TOP LEFT
+        glVertex2f(0.3f,  0.0f);  // TOP RIGHT
+        glVertex2f(0.3f, -0.15f); // BOT RIGHT 
     glEnd();
 
     // BARS
