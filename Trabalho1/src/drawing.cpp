@@ -33,8 +33,15 @@ void drawHouse(){
     glEnd();
 
     // CIRCLE WINDOW
-    glColor3f(WHITE.r, WHITE.g, WHITE.b);
+    glColor3f(LIGHT_BLUE.r, LIGHT_BLUE.g, LIGHT_BLUE.b);
     drawCircle(0.0f, 0.35f, 0.065f, 50);
+
+    // CIRCLE WINDOW BARS
+    glColor3f(BLUE.r, BLACK.g, BLACK.b);
+    glBegin(GL_LINES);
+        glVertex2f(0.0f, 0.285f); glVertex2f(0.0f, 0.415f); // Vertical bar
+        glVertex2f(-0.065f, 0.35f); glVertex2f(0.065f, 0.35f); // Horizontal bar
+    glEnd();
 
     // DOOR
     glColor3f(HOUSE_DOOR_FRONT.r, HOUSE_DOOR_FRONT.g, HOUSE_DOOR_FRONT.b);
@@ -55,12 +62,19 @@ void drawHouse(){
     glEnd();
 
     // WINDOW
-    glColor3f(WHITE.r, WHITE.g, WHITE.b);
+    glColor3f(LIGHT_BLUE.r, LIGHT_BLUE.g, LIGHT_BLUE.b);
     glBegin(GL_QUADS);
         glVertex2f( 0.45f, -0.055f); // BOT LEFT
         glVertex2f( 0.45f,  0.1f);  // TOP LEFT
         glVertex2f( 0.6f,  0.12f);  // TOP RIGHT
         glVertex2f( 0.6f, -0.03f);  // BOT RIGHT
+    glEnd();
+
+    // SIDE WINDOW BARS
+    glColor3f(BLACK.r, BLACK.g, BLACK.b);
+    glBegin(GL_LINES);
+        glVertex2f(0.525f, -0.045f); glVertex2f(0.525f, 0.11f); // Vertical bar
+        glVertex2f(0.45f, 0.0225f); glVertex2f(0.6f, 0.045f); // Horizontal bar
     glEnd();
 
     // SIDE ROOF
@@ -97,7 +111,7 @@ void drawCircle(float cx, float cy, float radius, int segments) {
  */
 void drawAxis(){
     glColor3f(WHITE.r, WHITE.g, WHITE.b);
-    glLineWidth(0.5f);
+    glLineWidth(1.5f);
 
     glBegin(GL_LINES);
         glVertex2f(0.0f, -1.0f); glVertex2f(0.0f, 1.0f); // Vertical line
@@ -143,18 +157,18 @@ void drawHelpBar() {
         for (const char* c = helpText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_9_BY_15, *c);
         }
-        offset += 0.5f;
+        offset += 0.35f;
     }
 
     // Draw mode texts (TOP)
     offset = 0.0f;
     for (int i = 0; i < 3; i++) {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
-        glRasterPos2f(left + 0.05f + offset, bot + 0.15f);
+        glRasterPos2f(left + 0.05f + offset, bot + 0.1f);
         for (const char* c = modeText[i]; *c != '\0'; c++) {
             glutBitmapCharacter(GLUT_BITMAP_9_BY_15, *c);
         }
-        offset += 0.5f;
+        offset += 0.35f;
     }
 }
 
@@ -166,12 +180,6 @@ void display(){
 	glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    if (isAxesVisible) {
-        glPushMatrix();
-            drawAxis();
-        glPopMatrix();
-    }
-
     glPushMatrix();
         glTranslatef(translationX, translationY, 0.0f);
         glScalef(scaleX, scaleY, 1.0f);
@@ -179,6 +187,12 @@ void display(){
         drawHouse();
     glPopMatrix();
     
+    if (isAxesVisible) {
+        glPushMatrix();
+            drawAxis();
+        glPopMatrix();
+    }
+
     glPushMatrix();
         drawHelpBar();
     glPopMatrix();

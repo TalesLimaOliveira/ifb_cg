@@ -12,6 +12,8 @@ const Color RED = {1.0f, 0.0f, 0.0f};
 const Color GREEN = {0.0f, 1.0f, 0.0f};
 const Color BLUE = {0.0f, 0.0f, 1.0f};
 
+const Color LIGHT_BLUE = {0.68f, 0.85f, 0.90f}; // Azul claro
+
 const Color BACKGROUND = {0.35f, 0.45f, 0.35f};
 
 // House Colors
