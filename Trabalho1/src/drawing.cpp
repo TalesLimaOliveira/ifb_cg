@@ -10,104 +10,57 @@ extern double angulo, left, right, bot, top;
 extern Mode currentMode;
 extern bool isMirrored, isAxesVisible;
 
+
 /**
- * @brief Draws a house.
+ * @brief Draws the house.
  */
 void drawHouse(){
-    // BASE
-    glBegin(GL_QUADS);
-        glColor3f(HOUSE.r, HOUSE.g, HOUSE.b);
-        glVertex2f(-0.4f, -0.4f); // BOT LEFT
-        glVertex2f(-0.4f,  0.2f); // TOP LEFT
-        glVertex2f( 0.4f,  0.2f); // TOP RIGHT
-        glVertex2f( 0.4f, -0.4f); // BOT RIGHT
-    glEnd();
-
-    // ROOF
-    glBegin(GL_TRIANGLES);
-        glColor3f(RED.r, RED.g, RED.b); glVertex2f(-0.4f, 0.2f);        // BOT LEFT
-        glColor3f(GREEN.r, GREEN.g, GREEN.b); glVertex2f(0.0f, 0.5f);   // TOP CENTER
-        glColor3f(BLUE.r, BLUE.g, BLUE.b); glVertex2f(0.4f, 0.2f);      // BOT RIGHT
-    glEnd();
-
-    // DOOR
-    glBegin(GL_QUADS);
-        glColor3f(INSIDE.r, INSIDE.g, INSIDE.b);
-        glVertex2f(-0.3f, -0.36f); // BOT LEFT
-        glVertex2f(-0.3f, 0.0f);  // TOP LEFT
-        glVertex2f(-0.1f, 0.0f);  // TOP RIGHT
-        glVertex2f(-0.1f, -0.36f); // BOT RIGHT
-    glEnd();
-
-    // WINDOW
-    glBegin(GL_QUADS);
-        glColor3f(INSIDE.r, INSIDE.g, INSIDE.b);
-        glVertex2f(0.1f, -0.15f); // BOT LEFT
-        glVertex2f(0.1f,  0.0f);  // TOP LEFT
-        glVertex2f(0.3f,  0.0f);  // TOP RIGHT
-        glVertex2f(0.3f, -0.15f); // BOT RIGHT 
-    glEnd();
-
-    // BARS
-    glBegin(GL_LINES);
-        glColor3f(WHITE.r, WHITE.g, WHITE.b);
-        glVertex2f(0.2f, 0.0f); // H TOP
-        glVertex2f(0.2f, -0.15f); // H BOT
-        glVertex2f(0.1f, -0.075f); // V LEFT
-        glVertex2f(0.3f, -0.075f); // V RIGHT
-    glEnd();
-}
-
-/**
- * @brief Draws a house2.
- */
-void drawHouse2(){
     // Draw the front base
-    glColor3f(HOUSE2_BASE_FRONT.r, HOUSE2_BASE_FRONT.g, HOUSE2_BASE_FRONT.b);
+    glColor3f(HOUSE_BASE_FRONT.r, HOUSE_BASE_FRONT.g, HOUSE_BASE_FRONT.b);
     glBegin(GL_QUADS);
-        glVertex2f(-0.5f, -0.5f); // Bottom Left
-        glVertex2f(-0.5f,  0.5f); // Top Left
-        glVertex2f( 0.5f,  0.5f); // Top Right
-        glVertex2f( 0.5f, -0.5f); // Bottom Right
+        glVertex2f(-0.5f, -0.5f); // BOT LEFT
+        glVertex2f(-0.5f,  0.5f); // TOP LEFT
+        glVertex2f( 0.5f,  0.5f); // TOP RIGHT
+        glVertex2f( 0.5f, -0.5f); // BOT RIGHT
     glEnd();
 
     // Draw the front roof
-    glColor3f(HOUSE2_ROOF_FRONT.r, HOUSE2_ROOF_FRONT.g, HOUSE2_ROOF_FRONT.b);
+    glColor3f(HOUSE_ROOF_FRONT.r, HOUSE_ROOF_FRONT.g, HOUSE_ROOF_FRONT.b);
     glBegin(GL_TRIANGLES);
-        glVertex2f(-0.5f,  0.5f); // Bottom Left
-        glVertex2f( 0.0f,  1.0f); // Top Center
-        glVertex2f( 0.5f,  0.5f); // Bottom Right
+        glVertex2f(-0.5f,  0.5f); // BOT LEFT
+        glVertex2f( 0.0f,  1.0f); // TOP CENTER
+        glVertex2f( 0.5f,  0.5f); // BOT RIGHT
     glEnd();
 
     // Draw the circular window on the front roof
-    glColor3f(HOUSE2_WINDOW_FRONT.r, HOUSE2_WINDOW_FRONT.g, HOUSE2_WINDOW_FRONT.b);
+    glColor3f(HOUSE_WINDOW_FRONT.r, HOUSE_WINDOW_FRONT.g, HOUSE_WINDOW_FRONT.b);
     drawCircle(0.0f, 0.75f, 0.1f, 50);
 
     // Draw the side base
-    glColor3f(HOUSE2_BASE_SIDE.r, HOUSE2_BASE_SIDE.g, HOUSE2_BASE_SIDE.b);
+    glColor3f(HOUSE_BASE_SIDE.r, HOUSE_BASE_SIDE.g, HOUSE_BASE_SIDE.b);
     glBegin(GL_QUADS);
-        glVertex2f( 0.5f, -0.5f); // Bottom Left
-        glVertex2f( 0.5f,  0.5f); // Top Left
-        glVertex2f( 1.5f,  0.6f); // Top Right
-        glVertex2f( 1.5f, -0.4f); // Bottom Right
+        glVertex2f( 0.5f, -0.5f); // BOT LEFT
+        glVertex2f( 0.5f,  0.5f); // TOP LEFT
+        glVertex2f( 1.5f,  0.6f); // TOP RIGHT
+        glVertex2f( 1.5f, -0.4f); // BOT RIGHT
     glEnd();
 
     // Draw the square window on the side base
-    glColor3f(HOUSE2_WINDOW_SIDE.r, HOUSE2_WINDOW_SIDE.g, HOUSE2_WINDOW_SIDE.b);
+    glColor3f(HOUSE_WINDOW_SIDE.r, HOUSE_WINDOW_SIDE.g, HOUSE_WINDOW_SIDE.b);
     glBegin(GL_QUADS);
-        glVertex2f( 0.9f, -0.1f); // Bottom Left
-        glVertex2f( 0.9f,  0.2f); // Top Left
-        glVertex2f( 1.2f,  0.2f); // Top Right
-        glVertex2f( 1.2f, -0.1f); // Bottom Right
+        glVertex2f( 0.9f, -0.1f); // BOT LEFT
+        glVertex2f( 0.9f,  0.2f); // TOP LEFT
+        glVertex2f( 1.2f,  0.2f); // TOP RIGHT
+        glVertex2f( 1.2f, -0.1f); // BOT RIGHT
     glEnd();
 
     // Draw the side roof
-    glColor3f(HOUSE2_ROOF_SIDE.r, HOUSE2_ROOF_SIDE.g, HOUSE2_ROOF_SIDE.b);
+    glColor3f(HOUSE_ROOF_SIDE.r, HOUSE_ROOF_SIDE.g, HOUSE_ROOF_SIDE.b);
     glBegin(GL_QUADS);
-        glVertex2f( 0.5f,  0.5f); // Bottom Left
-        glVertex2f( 0.0f,  1.0f); // Top Left
-        glVertex2f( 1.4f,  1.1f); // Top Right
-        glVertex2f( 1.5f,  0.6f); // Bottom Right
+        glVertex2f( 0.5f,  0.5f); // BOT LEFT
+        glVertex2f( 0.0f,  1.0f); // TOP LEFT
+        glVertex2f( 1.25f, 1.1f); // TOP RIGHT
+        glVertex2f( 1.5f,  0.6f); // BOT RIGHT
     glEnd();
 }
 
@@ -214,7 +167,7 @@ void display(){
         glTranslatef(translationX, translationY, 0.0f);
         glScalef(scaleX, scaleY, 1.0f);
         glRotatef(angulo, 0.0f, 0.0f, 1.0f);
-        drawHouse2();
+        drawHouse();
     glPopMatrix();
     
     glPushMatrix();

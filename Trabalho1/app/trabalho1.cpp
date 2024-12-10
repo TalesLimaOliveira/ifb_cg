@@ -4,6 +4,11 @@
 #include "keyboard.h"
 #include "colors.h"
 
+/**
+ * COLOCAR NO CENTRO
+ * FAZER SER MENOR
+ * AJUSTAR TETO TOPRIGHT
+ */
 //? IGNORE: scp -r . rasp@rasp:/home/rasp/Documents/ifb_cg/Trabalho1
 
 double translationX = 0.0f, translationY = 0.0f;

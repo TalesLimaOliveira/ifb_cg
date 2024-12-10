@@ -5,8 +5,14 @@
  * @brief Draws a house.
  */
 void drawHouse();
-void drawHouse2();
 
+/**
+ * @brief Draws a Circle.
+ * @param cx The x-coordinate of the center of the circle.
+ * @param cy The y-coordinate of the center of the circle.
+ * @param radius The radius of the circle.
+ * @param segments The number of segments used to draw the circle.
+ */
 void drawCircle(float cx, float cy, float radius, int segments);
 
 /**
