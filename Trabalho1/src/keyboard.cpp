@@ -74,7 +74,7 @@ void keyboardSpecial(int key, int x, int y){
                 translationY += 0.2f;
             }
         } else if (currentMode == ROTATE){ // Rotate clockwise
-            angulo += 0.5;
+            angulo += 0.75;
         } else if (currentMode == SCALE){ // Scale up
             if (isMirrored) {
                 if (scaleX - 0.1 >= -MAX_SCALE && scaleY + 0.1 <= MAX_SCALE) {
@@ -94,7 +94,7 @@ void keyboardSpecial(int key, int x, int y){
                 translationY -= 0.2f;
             }
         } else if (currentMode == ROTATE){ // Rotate counter-clockwise
-            angulo -= 0.5;
+            angulo -= 0.75;
         } else if (currentMode == SCALE){ // Scale down
             if (isMirrored) {
                 if (scaleX + 0.1 <= -MIN_SCALE && scaleY - 0.1 >= MIN_SCALE) {

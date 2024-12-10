@@ -15,52 +15,61 @@ extern bool isMirrored, isAxesVisible;
  * @brief Draws the house.
  */
 void drawHouse(){
-    // Draw the front base
+    // FRONT BASE
     glColor3f(HOUSE_BASE_FRONT.r, HOUSE_BASE_FRONT.g, HOUSE_BASE_FRONT.b);
     glBegin(GL_QUADS);
-        glVertex2f(-0.5f, -0.5f); // BOT LEFT
-        glVertex2f(-0.5f,  0.5f); // TOP LEFT
-        glVertex2f( 0.5f,  0.5f); // TOP RIGHT
-        glVertex2f( 0.5f, -0.5f); // BOT RIGHT
+        glVertex2f(-0.25f, -0.25f); // BOT LEFT
+        glVertex2f(-0.25f,  0.25f); // TOP LEFT
+        glVertex2f( 0.25f,  0.25f); // TOP RIGHT
+        glVertex2f( 0.25f, -0.25f); // BOT RIGHT
     glEnd();
 
-    // Draw the front roof
+    // ROOF FRONT
     glColor3f(HOUSE_ROOF_FRONT.r, HOUSE_ROOF_FRONT.g, HOUSE_ROOF_FRONT.b);
     glBegin(GL_TRIANGLES);
-        glVertex2f(-0.5f,  0.5f); // BOT LEFT
-        glVertex2f( 0.0f,  1.0f); // TOP CENTER
-        glVertex2f( 0.5f,  0.5f); // BOT RIGHT
+        glVertex2f(-0.25f, 0.25f); // BOT LEFT
+        glVertex2f( 0.0f,  0.5f);  // TOP CENTER
+        glVertex2f( 0.25f, 0.25f); // BOT RIGHT
     glEnd();
 
-    // Draw the circular window on the front roof
-    glColor3f(HOUSE_WINDOW_FRONT.r, HOUSE_WINDOW_FRONT.g, HOUSE_WINDOW_FRONT.b);
-    drawCircle(0.0f, 0.75f, 0.1f, 50);
+    // CIRCLE WINDOW
+    glColor3f(WHITE.r, WHITE.g, WHITE.b);
+    drawCircle(0.0f, 0.35f, 0.065f, 50);
 
-    // Draw the side base
+    // DOOR
+    glColor3f(HOUSE_DOOR_FRONT.r, HOUSE_DOOR_FRONT.g, HOUSE_DOOR_FRONT.b);
+    glBegin(GL_QUADS);
+        glVertex2f(-0.075f, -0.245f); // BOT LEFT
+        glVertex2f(-0.075f,  0.05f); // TOP LEFT
+        glVertex2f( 0.075f,  0.05f); // TOP RIGHT
+        glVertex2f( 0.075f, -0.245f); // BOT RIGHT
+    glEnd();
+
+    // SIDE BASE
     glColor3f(HOUSE_BASE_SIDE.r, HOUSE_BASE_SIDE.g, HOUSE_BASE_SIDE.b);
     glBegin(GL_QUADS);
-        glVertex2f( 0.5f, -0.5f); // BOT LEFT
-        glVertex2f( 0.5f,  0.5f); // TOP LEFT
-        glVertex2f( 1.5f,  0.6f); // TOP RIGHT
-        glVertex2f( 1.5f, -0.4f); // BOT RIGHT
+        glVertex2f( 0.25f, -0.25f); // BOT LEFT
+        glVertex2f( 0.25f,  0.25f); // TOP LEFT
+        glVertex2f( 0.75f,  0.3f); // TOP RIGHT
+        glVertex2f( 0.75f, -0.15f); // BOT RIGHT
     glEnd();
 
-    // Draw the square window on the side base
-    glColor3f(HOUSE_WINDOW_SIDE.r, HOUSE_WINDOW_SIDE.g, HOUSE_WINDOW_SIDE.b);
+    // WINDOW
+    glColor3f(WHITE.r, WHITE.g, WHITE.b);
     glBegin(GL_QUADS);
-        glVertex2f( 0.9f, -0.1f); // BOT LEFT
-        glVertex2f( 0.9f,  0.2f); // TOP LEFT
-        glVertex2f( 1.2f,  0.2f); // TOP RIGHT
-        glVertex2f( 1.2f, -0.1f); // BOT RIGHT
+        glVertex2f( 0.45f, -0.055f); // BOT LEFT
+        glVertex2f( 0.45f,  0.1f);  // TOP LEFT
+        glVertex2f( 0.6f,  0.12f);  // TOP RIGHT
+        glVertex2f( 0.6f, -0.03f);  // BOT RIGHT
     glEnd();
 
-    // Draw the side roof
+    // SIDE ROOF
     glColor3f(HOUSE_ROOF_SIDE.r, HOUSE_ROOF_SIDE.g, HOUSE_ROOF_SIDE.b);
     glBegin(GL_QUADS);
-        glVertex2f( 0.5f,  0.5f); // BOT LEFT
-        glVertex2f( 0.0f,  1.0f); // TOP LEFT
-        glVertex2f( 1.25f, 1.1f); // TOP RIGHT
-        glVertex2f( 1.5f,  0.6f); // BOT RIGHT
+        glVertex2f( 0.25f,  0.25f); // BOT LEFT
+        glVertex2f( 0.0f,  0.5f); // TOP LEFT
+        glVertex2f( 0.5f, 0.525f); // TOP RIGHT
+        glVertex2f( 0.75f,  0.3f); // BOT RIGHT
     glEnd();
 }
 
@@ -132,7 +141,7 @@ void drawHelpBar() {
         glColor3f(helpColors[i].r, helpColors[i].g, helpColors[i].b);
         glRasterPos2f(left + 0.05f + offset, bot + 0.05f);
         for (const char* c = helpText[i]; *c != '\0'; c++) {
-            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, *c);
         }
         offset += 0.5f;
     }
@@ -143,7 +152,7 @@ void drawHelpBar() {
         glColor3f(modeColors[i].r, modeColors[i].g, modeColors[i].b);
         glRasterPos2f(left + 0.05f + offset, bot + 0.15f);
         for (const char* c = modeText[i]; *c != '\0'; c++) {
-            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, *c);
         }
         offset += 0.5f;
     }
