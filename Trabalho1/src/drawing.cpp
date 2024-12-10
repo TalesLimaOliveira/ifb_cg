@@ -32,23 +32,23 @@ void drawHouse(){
     glBegin(GL_QUADS);
         glColor3f(BLACK.r, BLACK.g, BLACK.b);
         glVertex2f(-0.3f, -0.4f); // BOT LEFT
-        glVertex2f(-0.3f, -0.1f); // TOP LEFT
-        glVertex2f(-0.1f, -0.1f); // TOP RIGHT
+        glVertex2f(-0.3f, -0.15f); // TOP LEFT
+        glVertex2f(-0.1f, -0.15f); // TOP RIGHT
         glVertex2f(-0.1f, -0.4f); // BOT RIGHT
     glEnd();
 
     // WINDOW
     glBegin(GL_QUADS);
-        glColor3f(WHITE.r, WHITE.g, WHITE.b); // WHITE
+        glColor3f(BLACK.r, BLACK.g, BLACK.b);
         glVertex2f(0.1f, -0.1f); // BOT LEFT
-        glVertex2f(0.1f,  0.1f); // TOP LEFT
-        glVertex2f(0.3f,  0.1f); // TOP RIGHT
+        glVertex2f(0.1f,  0.15f); // TOP LEFT
+        glVertex2f(0.3f,  0.15f); // TOP RIGHT
         glVertex2f(0.3f, -0.1f); // BOT RIGHT 
     glEnd();
 
     // BARS
     glBegin(GL_LINES);
-        glColor3f(BLACK.r, BLACK.g, BLACK.b); // BLACK
+        glColor3f(WHITE.r, WHITE.g, WHITE.b);
         glVertex2f(0.2f, 0.1f); // H TOP
         glVertex2f(0.2f, -0.1f); // H BOT
         glVertex2f(0.1f, 0.0f); // V LEFT
@@ -64,8 +64,8 @@ void drawAxis(){
     glLineWidth(0.5f);
 
     glBegin(GL_LINES);
-        glVertex2f(0.0f, bot); glVertex2f(0.0f, top); // Vertical line
-        glVertex2f(left, 0.0f); glVertex2f(right, 0.0f); // Horizontal line
+        glVertex2f(0.0f, -1.0f); glVertex2f(0.0f, 1.0f); // Vertical line
+        glVertex2f(-1.0f, 0.0f); glVertex2f(1.0f, 0.0f); // Horizontal line
     glEnd();
 }
 
