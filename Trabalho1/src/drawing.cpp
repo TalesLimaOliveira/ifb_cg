@@ -44,7 +44,7 @@ void drawHouse(){
     glEnd();
 
     // DOOR
-    glColor3f(HOUSE_DOOR_FRONT.r, HOUSE_DOOR_FRONT.g, HOUSE_DOOR_FRONT.b);
+    glColor3f(BROWN.r, BROWN.g, BROWN.b);
     glBegin(GL_QUADS);
         glVertex2f(-0.075f, -0.245f); // BOT LEFT
         glVertex2f(-0.075f,  0.05f); // TOP LEFT

@@ -19,26 +19,28 @@ void initialize(void){
     glLoadIdentity();
 }
 
+
 /**
  * @brief Handles window reshaping.
  * @param w The new width of the window.
  * @param h The new height of the window.
  */
-void reshape(GLsizei w, GLsizei h){
-    if (h == 0) h = 1;
-    glViewport(0, 0, w, h);
+void reshape(GLsizei width, GLsizei height){
+    if (height == 0){height = 1;}
+    
+    glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    // Adjust the orthographic projection to maintain the aspect ratio
-    if (w <= h) {
-        gluOrtho2D(left, right, bot * (GLfloat)h / (GLfloat)w, top * (GLfloat)h / (GLfloat)w);
+    GLfloat aspect = (GLfloat)width / height;
+
+    if (aspect >= 1.0f) {
+        gluOrtho2D(-aspect, aspect, -1.0f, 1.0f);
     } else {
-        gluOrtho2D(left * (GLfloat)w / (GLfloat)h, right * (GLfloat)w / (GLfloat)h, bot, top);
+        gluOrtho2D(-1.0f, 1.0f, -1.0f / aspect, 1.0f / aspect);
     }
 
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
 }
 
 /**
